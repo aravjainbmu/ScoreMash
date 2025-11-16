@@ -1,0 +1,127 @@
+<%- include('partials/header', { title: title, currentPage: 'matches', cssFile: 'matches' }) %>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Live Matches</h1>
+        <p>Follow all the cricket action happening right now</p>
+    </div>
+
+    <div class="matches-section">
+        <div class="section-title-bar">
+            <h2>Live Now</h2>
+            <span class="live-indicator"></span>
+        </div>
+        <div class="matches-grid">
+            <% if (typeof liveMatches !== 'undefined' && liveMatches.length > 0) { %>
+                <% liveMatches.forEach(match => { %>
+                <div class="match-card">
+                    <a href="/matches/<%= match.id %>" class="match-link">
+                        <span class="match-status-badge live">Live</span>
+                        <div class="match-teams">
+                            <div class="match-team">
+                                <span class="team-flag"><%= match.team1.flag %></span>
+                                <span class="team-name"><%= match.team1.name %></span>
+                                <% if (match.team1.score) { %>
+                                <span class="team-score"><%= match.team1.score %></span>
+                                <% } %>
+                            </div>
+                            <div class="match-vs">VS</div>
+                            <div class="match-team">
+                                <span class="team-flag"><%= match.team2.flag %></span>
+                                <span class="team-name"><%= match.team2.name %></span>
+                                <% if (match.team2.score) { %>
+                                <span class="team-score"><%= match.team2.score %></span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="match-info">
+                            <% if (match.statusText) { %>
+                            <p class="match-status-text"><%= match.statusText %></p>
+                            <% } %>
+                            <% if (match.overs) { %>
+                            <p class="match-time"><%= match.overs %></p>
+                            <% } %>
+                        </div>
+                    </a>
+                </div>
+                <% }); %>
+            <% } else { %>
+                <p>No live matches at the moment.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <% if (typeof upcomingMatches !== 'undefined' && upcomingMatches.length > 0) { %>
+    <div class="matches-section">
+        <div class="section-title-bar">
+            <h2>Upcoming Matches</h2>
+        </div>
+        <div class="matches-grid">
+            <% upcomingMatches.forEach(match => { %>
+            <div class="match-card">
+                <a href="/matches/<%= match.id %>" class="match-link">
+                    <span class="match-status-badge upcoming">Upcoming</span>
+                    <div class="match-teams">
+                        <div class="match-team">
+                            <span class="team-flag"><%= match.team1.flag %></span>
+                            <span class="team-name"><%= match.team1.name %></span>
+                        </div>
+                        <div class="match-vs">VS</div>
+                        <div class="match-team">
+                            <span class="team-flag"><%= match.team2.flag %></span>
+                            <span class="team-name"><%= match.team2.name %></span>
+                        </div>
+                    </div>
+                    <div class="match-info">
+                        <p class="match-time"><%= match.date %></p>
+                        <p class="match-venue"><%= match.venue %></p>
+                    </div>
+                </a>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <% } %>
+
+    <% if (typeof finishedMatches !== 'undefined' && finishedMatches.length > 0) { %>
+    <div class="matches-section">
+        <div class="section-title-bar">
+            <h2>Recent Results</h2>
+        </div>
+        <div class="matches-grid">
+            <% finishedMatches.forEach(match => { %>
+            <div class="match-card">
+                <a href="/matches/<%= match.id %>" class="match-link">
+                    <span class="match-status-badge finished">Finished</span>
+                    <div class="match-teams">
+                        <div class="match-team">
+                            <span class="team-flag"><%= match.team1.flag %></span>
+                            <span class="team-name"><%= match.team1.name %></span>
+                            <% if (match.team1.score) { %>
+                            <span class="team-score"><%= match.team1.score %></span>
+                            <% } %>
+                        </div>
+                        <div class="match-vs">VS</div>
+                        <div class="match-team">
+                            <span class="team-flag"><%= match.team2.flag %></span>
+                            <span class="team-name"><%= match.team2.name %></span>
+                            <% if (match.team2.score) { %>
+                            <span class="team-score"><%= match.team2.score %></span>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="match-info">
+                        <% if (match.statusText) { %>
+                        <p class="match-status-text"><%= match.statusText %></p>
+                        <% } %>
+                    </div>
+                </a>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<%- include('partials/footer') %>
+

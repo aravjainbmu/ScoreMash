@@ -1,0 +1,41 @@
+<%- include('partials/header', { title: typeof title !== 'undefined' ? title : 'ScoreMash - Error', currentPage: typeof currentPage !== 'undefined' ? currentPage : '' }) %>
+
+<div class="container" style="text-align: center; padding: 60px 20px;">
+    <h1 style="font-size: 48px; margin-bottom: 20px;">Oops!</h1>
+    <p style="font-size: 18px; color: var(--darkgrey); margin-bottom: 30px;"><%= typeof error !== 'undefined' ? error : 'Something went wrong' %></p>
+    <a href="/" style="display: inline-block; padding: 12px 24px; background-color: var(--green); color: white; border-radius: 6px; text-decoration: none;">Go Home</a>
+</div>
+
+<style>
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 16px !important;
+    }
+    
+    .container h1 {
+        font-size: 36px !important;
+    }
+    
+    .container p {
+        font-size: 16px !important;
+    }
+    
+    .container a {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 28px !important;
+    }
+    
+    .container p {
+        font-size: 14px !important;
+    }
+}
+</style>
+
+<%- include('partials/footer') %>
+

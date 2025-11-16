@@ -1,0 +1,163 @@
+<%- include('partials/header', { title: title, currentPage: '', cssFile: 'checkout' }) %>
+
+<div class="container">
+    <div style="max-width: 800px; margin: 60px auto; text-align: center;">
+        <div style="font-size: 64px; margin-bottom: 24px;">✅</div>
+        <h1 style="font-size: 36px; font-weight: 600; color: var(--black); margin-bottom: 16px;">
+            Order Confirmed!
+        </h1>
+        <p style="font-size: 18px; color: var(--darkgrey); margin-bottom: 40px;">
+            Thank you for your order. Your order number is <strong style="color: var(--green);"><%= order.orderNumber %></strong>
+        </p>
+        
+        <div class="form-card" style="text-align: left; margin-bottom: 32px;">
+            <h2 style="margin-bottom: 24px;">Order Details</h2>
+            
+            <div class="review-section">
+                <h3>Order Items</h3>
+                <div class="order-items">
+                    <% order.items.forEach(item => { %>
+                    <div class="order-item">
+                        <div class="item-image">
+                                <% if (isValidUrl(item.image)) { %>
+                                    <img src="<%= item.image %>" width="80%" height="80%">
+                                <% } else { %>
+                                    <%= item.image || '🏏' %>
+                                <% } %>
+                        </div>
+                        <div class="item-info">
+                        <div class="item-name"><%= item.name %></div>
+                        <div class="item-qty">Qty: <%= item.quantity %></div>
+                        </div>
+                        <div class="item-price">$<%= (item.price * item.quantity).toFixed(2) %></div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+            
+            <div class="review-section">
+                <h3>Shipping Address</h3>
+                <div class="review-info">
+                    <p><strong><%= order.shipping.firstName %> <%= order.shipping.lastName %></strong></p>
+                    <p><%= order.shipping.address %></p>
+                    <p><%= order.shipping.city %>, <%= order.shipping.state %> <%= order.shipping.postalCode %></p>
+                    <p><%= order.shipping.country %></p>
+                </div>
+            </div>
+            
+            <div class="review-section">
+                <h3>Payment</h3>
+                <div class="review-info">
+                    <p><strong><%= order.payment.method === 'card' ? 'Credit/Debit Card' : 'Cash on Delivery' %></strong></p>
+                    <% if (order.payment.method === 'card' && order.payment.cardNumber) { %>
+                    <p>Card ending in: ****<%= order.payment.cardNumber %></p>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div class="price-breakdown">
+                <div class="price-row">
+                    <span>Subtotal</span>
+                    <span>$<%= order.subtotal.toFixed(2) %></span>
+                </div>
+                <div class="price-row">
+                    <span>Shipping</span>
+                    <span>$<%= order.shippingCost.toFixed(2) %></span>
+                </div>
+                <div class="price-row">
+                    <span>Tax</span>
+                    <span>$<%= order.tax.toFixed(2) %></span>
+                </div>
+            </div>
+            
+            <div class="order-total">
+                <span>Total</span>
+                <span>$<%= order.total.toFixed(2) %></span>
+            </div>
+        </div>
+        
+        <div style="display: flex; gap: 16px; justify-content: center;">
+            <a href="/shop" class="continue-btn" style="text-decoration: none; display: inline-block;">Continue Shopping</a>
+            <a href="/" class="continue-btn" style="text-decoration: none; display: inline-block; background: var(--grey); color: var(--black);">Back to Home</a>
+        </div>
+    </div>
+</div>
+
+<style>
+
+.review-section {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.review-section:last-of-type {
+    border-bottom: none;
+}
+
+.review-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.review-info {
+    color: var(--darkgrey);
+    line-height: 1.8;
+}
+
+.review-info p {
+    margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+    .container > div {
+        margin: 40px auto;
+        padding: 0 16px;
+    }
+    
+    .container > div > div:first-child {
+        font-size: 48px;
+    }
+    
+    .container > div h1 {
+        font-size: 28px;
+    }
+    
+    .container > div p {
+        font-size: 16px;
+    }
+    
+    .form-card {
+        padding: 20px;
+    }
+    
+    .container > div > div:last-child {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .container > div > div:last-child a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container > div h1 {
+        font-size: 24px;
+    }
+    
+    .form-card {
+        padding: 16px;
+    }
+    
+    .review-section h3 {
+        font-size: 16px;
+    }
+}
+</style>
+
+<%- include('partials/footer') %>
+

@@ -1,0 +1,90 @@
+<%- include('partials/header', { title: title, currentPage: 'news', cssFile: 'news' }) %>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Latest Cricket News & Updates</h1>
+    </div>
+    <div class="news-hero">
+        <% if (typeof featuredNews !== 'undefined' && featuredNews) { %>
+        <div class="featured-article-large">
+            <div class="featured-image-large">
+                <img src="https://static.toiimg.com/thumb/msid-125134642,imgsize-388962,width-400,resizemode-4/australia-vs-india-4th-t20i.jpg" width="100%" height="100%">
+            </div>
+            <div class="featured-content">
+                <span class="article-category"><%= featuredNews.category || 'News' %></span>
+                <h2><%= featuredNews.title %></h2>
+                <p class="article-excerpt"><%= featuredNews.excerpt %></p>
+                <div class="article-meta">
+                    <span><%= featuredNews.date || 'Recently' %></span>
+                    <span>•</span>
+                    <span><%= featuredNews.readTime || '5 min read' %></span>
+                </div>
+                <a href="https://timesofindia.indiatimes.com/sports/cricket/india-vs-australia/ind-vs-aus-4th-t20i-highlights-india-take-unassailable-2-1-series-lead-with-dominant-bowling-display/articleshow/125134684.cms" class="read-more-btn">Read More</a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+    <div class="more-news-section">
+        <h2>More News & Articles</h2>
+        <div class="news-grid">
+            <% if (typeof articles !== 'undefined' && articles.length > 0) { %>
+                <% articles.forEach(article => { %>
+                <div class="news-card">
+                    <div class="news-image">📸</div>
+                    <span class="news-category"><%= article.category || 'News' %></span>
+                    <h3><%= article.title %></h3>
+                    <p class="news-excerpt"><%= article.excerpt %></p>
+                    <div class="news-meta"><%= article.date || 'Recently' %> • <%= article.readTime || '5 min read' %></div>
+                </div>
+                <% }); %>
+            <% } else { %>
+                <p>No news articles available</p>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="news-sidebar-layout">
+        <div class="breaking-news-section">
+            <h3>Breaking News</h3>
+            <ul class="breaking-news-list">
+                <% if (typeof breakingNews !== 'undefined' && breakingNews.length > 0) { %>
+                    <% breakingNews.forEach((item, index) => { %>
+                    <li>
+                        <span class="breaking-badge">BREAKING</span>
+                        <span class="breaking-title"><%= typeof item === 'string' ? item : item.title %></span>
+                        <span class="breaking-time"><%= typeof item === 'object' && item.time ? item.time : 'Just now' %></span>
+                    </li>
+                    <% }); %>
+                <% } else { %>
+                    <li>No breaking news at the moment</li>
+                <% } %>
+            </ul>
+        </div>
+
+        <div class="multimedia-spotlight-section">
+            <h3>Multimedia Spotlight</h3>
+            <div class="multimedia-items">
+                <div class="multimedia-item">
+                    <div class="multimedia-thumbnail">🎥</div>
+                    <div class="multimedia-info">
+                        <h4>India Clinch Series with Dominant Win</h4>
+                        <p>Watch the highlights as India sealed the series with a commanding performance, led by a brilliant century and sharp bowling attack.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="newsletter-section">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Get the latest cricket news delivered to your inbox</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+

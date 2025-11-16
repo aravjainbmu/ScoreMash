@@ -1,0 +1,87 @@
+<%- include('partials/header', { title: title, currentPage: 'shop', cssFile: 'shop' }) %>
+
+<div class="container">
+    <div class="shop-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Premium Cricket Gear</h1>
+                <p>Discover top-quality cricket equipment and merchandise</p>
+                <a href="#products" class="hero-btn">Shop Now</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="collection-header">
+        <h2>Our Collection</h2>
+    </div>
+
+    <div class="shop-layout">
+        <div class="filters-sidebar">
+            <div class="filter-section">
+                <h3 class="filter-title">Category</h3>
+                <div class="filter-options" id="categoryFilters">
+                    <label class="filter-option">
+                        <input type="radio" name="category" value="all" checked>
+                        <span>All Categories</span>
+                    </label>
+                    <% categories.forEach(cat => { %>
+                    <label class="filter-option">
+                        <input type="radio" name="category" value="<%= cat %>">
+                        <span><%= cat %></span>
+                    </label>
+                    <% }); %>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Price Range</h3>
+                <div class="price-range">
+                    <input type="range" id="priceRange" min="0" max="1000" value="1000" class="price-slider">
+                    <div class="price-values" id="priceDisplay">$0 - $1000</div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Brand</h3>
+                <div class="filter-options" id="brandFilters">
+                    <% brands.forEach(brand => { %>
+                    <label class="filter-option">
+                        <input type="checkbox" name="brand" value="<%= brand %>">
+                        <span><%= brand %></span>
+                    </label>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-section" id="products">
+            <div class="products-header">
+                <div class="sort-dropdown">
+                    <label for="sortProducts">Sort by:</label>
+                    <select id="sortProducts">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                        <option value="name">Name</option>
+                    </select>
+                </div>
+            </div>
+            <div class="products-grid" id="productsGrid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Pass products data to client
+    window.productsData = {
+        products: <%- JSON.stringify(products) %>,
+        categories: <%- JSON.stringify(categories) %>,
+        brands: <%- JSON.stringify(brands) %>
+    };
+
+</script>
+
+<%- include('partials/footer', { jsFile: 'shop' }) %>
+

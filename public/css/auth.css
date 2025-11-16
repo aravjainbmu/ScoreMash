@@ -1,0 +1,233 @@
+.auth-container {
+    min-height: calc(100vh - 175px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    margin-top: 80px;
+}
+
+.auth-card {
+    background-color: var(--grey);
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.auth-card h1 {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.auth-subtitle {
+    font-size: 16px;
+    color: var(--darkgrey);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-form {
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--darkgrey);
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: var(--green);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.auth-btn:hover {
+    background-color: #1ab870;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: var(--darkgrey);
+    font-size: 14px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-divider span {
+    padding: 0 16px;
+}
+
+.social-login {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: border-color 0.2s;
+    color: var(--black);
+}
+
+.social-btn:hover {
+    border-color: var(--green);
+}
+
+.social-btn .material-symbols-outlined {
+    font-size: 20px;
+}
+
+.auth-footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--darkgrey);
+}
+
+.auth-footer a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.checkbox-label a {
+    color: var(--green);
+    text-decoration: none;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 40px 20px;
+        margin-top: 80px;
+    }
+    
+    .auth-card {
+        padding: 32px 24px;
+    }
+    
+    .auth-card h1 {
+        font-size: 28px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .social-login {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 30px 16px;
+    }
+    
+    .auth-card {
+        padding: 24px 20px;
+    }
+    
+    .auth-card h1 {
+        font-size: 24px;
+    }
+    
+    .auth-subtitle {
+        font-size: 14px;
+    }
+}
+
+

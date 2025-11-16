@@ -1,0 +1,275 @@
+<%- include('partials/header', { title: title, currentPage: 'matches', cssFile: 'match' }) %>
+
+<main class="container">
+    <% if (typeof match !== 'undefined' && match) { %>
+    <section class="match-banner card">
+        <div class="teams">
+            <div class="team left">
+                <div class="team-name"><%= match.team1 ? match.team1.name : 'Team 1' %></div>
+                <div class="score"><%= match.team1 && match.team1.score ? match.team1.score : 'TBD' %></div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="team right">
+                <div class="team-name"><%= match.team2 ? match.team2.name : 'Team 2' %></div>
+                <div class="score"><%= match.team2 && match.team2.score ? match.team2.score : 'TBD' %></div>
+            </div>
+        </div>
+        <div class="match-status">
+            <% if (match.status === 'Live') { %>
+                <%= match.statusText || 'Match in progress' %>
+            <% } else if (match.status === 'Finished') { %>
+                <%= match.statusText || 'Match completed' %>
+            <% } else { %>
+                Match scheduled
+            <% } %>
+        </div>
+        <div class="match-info">
+            <span class="info-item">📅 <%= match.date || 'Date TBD' %></span>
+            <span class="info-item">📍 <%= match.venue || 'Venue TBD' %></span>
+        </div>
+    </section>
+    <% } else { %>
+    <section class="match-banner card">
+        <p>Match data not available</p>
+    </section>
+    <% } %>
+
+    <div class="grid">
+        <div class="left-column">
+            <section class="card live-scorecard">
+                <h2 class="section-title">Live Scorecard</h2>
+                <div class="score-tables">
+                    <div class="table-block">
+                        <div class="table-title green">Batting: <%= match.team1.name %></div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>R</th>
+                                    <th>B</th>
+                                    <th>4s</th>
+                                    <th>6s</th>
+                                    <th>SR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (match.team1Batting && match.team1Batting.length > 0) { %>
+                                    <% match.team1Batting.forEach(player => { %>
+                                    <tr>
+                                        <td>
+                                            <span class="player-icon">👤</span> <%= player.name %>
+                                            <% if (player.out) { %>
+                                                <span class="out-badge">(Out)</span>
+                                            <% } %>
+                                        </td>
+                                        <td><%= player.runs || 0 %></td>
+                                        <td><%= player.balls || 0 %></td>
+                                        <td><%= player.fours || 0 %></td>
+                                        <td><%= player.sixes || 0 %></td>
+                                        <td><%= player.strikeRate ? player.strikeRate.toFixed(2) : '0.00' %></td>
+                                    </tr>
+                                    <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--darkgrey);">No batting data available</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-block">
+                        <div class="table-title green">Bowling: <%= match.team2.name %></div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>O</th>
+                                    <th>M</th>
+                                    <th>R</th>
+                                    <th>W</th>
+                                    <th>Eco</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (match.team2Bowling && match.team2Bowling.length > 0) { %>
+                                    <% match.team2Bowling.forEach(bowler => { %>
+                                    <tr>
+                                        <td><span class="player-icon">👤</span> <%= bowler.name %></td>
+                                        <td><%= bowler.overs || 0 %></td>
+                                        <td><%= bowler.maidens || 0 %></td>
+                                        <td><%= bowler.runs || 0 %></td>
+                                        <td><%= bowler.wickets || 0 %></td>
+                                        <td><%= bowler.economy ? bowler.economy.toFixed(2) : '0.00' %></td>
+                                    </tr>
+                                    <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--darkgrey);">No bowling data available</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-block">
+                        <div class="table-title green">Batting: <%= match.team2.name %></div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>R</th>
+                                    <th>B</th>
+                                    <th>4s</th>
+                                    <th>6s</th>
+                                    <th>SR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (match.team2Batting && match.team2Batting.length > 0) { %>
+                                    <% match.team2Batting.forEach(player => { %>
+                                    <tr>
+                                        <td>
+                                            <span class="player-icon">👤</span> <%= player.name %>
+                                            <% if (player.out) { %>
+                                                <span class="out-badge">(Out)</span>
+                                            <% } %>
+                                        </td>
+                                        <td><%= player.runs || 0 %></td>
+                                        <td><%= player.balls || 0 %></td>
+                                        <td><%= player.fours || 0 %></td>
+                                        <td><%= player.sixes || 0 %></td>
+                                        <td><%= player.strikeRate ? player.strikeRate.toFixed(2) : '0.00' %></td>
+                                    </tr>
+                                    <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--darkgrey);">No batting data available</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-block">
+                        <div class="table-title green">Bowling: <%= match.team1.name %></div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>O</th>
+                                    <th>M</th>
+                                    <th>R</th>
+                                    <th>W</th>
+                                    <th>Eco</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (match.team1Bowling && match.team1Bowling.length > 0) { %>
+                                    <% match.team1Bowling.forEach(bowler => { %>
+                                    <tr>
+                                        <td><span class="player-icon">👤</span> <%= bowler.name %></td>
+                                        <td><%= bowler.overs || 0 %></td>
+                                        <td><%= bowler.maidens || 0 %></td>
+                                        <td><%= bowler.runs || 0 %></td>
+                                        <td><%= bowler.wickets || 0 %></td>
+                                        <td><%= bowler.economy ? bowler.economy.toFixed(2) : '0.00' %></td>
+                                    </tr>
+                                    <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--darkgrey);">No bowling data available</td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <% if (match.fallOfWickets && match.fallOfWickets.length > 0) { %>
+                <div class="fow">
+                    <h3 class="section-title">Fall of Wickets</h3>
+                    <ul class="fow-list">
+                        <% match.fallOfWickets.forEach(fow => { %>
+                        <% 
+                            const getOrdinal = (n) => {
+                                const s = ["th", "st", "nd", "rd"];
+                                const v = n % 100;
+                                return n + (s[(v - 20) % 10] || s[v] || s[0]);
+                            };
+                        %>
+                        <li><%= getOrdinal(fow.wicket) %> wicket at <%= fow.runs %> runs - <%= fow.player %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+                <% } %>
+            </section>
+
+            <section class="card commentary">
+                <h2 class="section-title">Ball-by-Ball Commentary</h2>
+                <% if (match.status === 'upcoming') { %>
+                    <p style="color: var(--darkgrey); font-size: 14px; padding: 20px; background: var(--grey); border-radius: 8px; text-align: center;">
+                        Commentary will be available once the match begins.
+                    </p>
+                <% } else if (match.commentary && match.commentary.length > 0) { %>
+                    <ul class="overs" id="overs">
+                        <% match.commentary.forEach(comment => { %>
+                        <li>
+                            <span class="over"><%= comment.over %></span> 
+                            <span class="comment-text"><%= comment.text %></span>
+                        </li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p style="color: var(--darkgrey); font-size: 14px; padding: 20px; background: var(--grey); border-radius: 8px; text-align: center;">
+                        Commentary data not available.
+                    </p>
+                <% } %>
+            </section>
+        </div>
+
+        <aside class="right-column">
+            <section class="card lineup">
+                <h2 class="section-title"><%= match && match.team1 ? match.team1.name : 'Team 1' %> Lineup</h2>
+                <ul class="player-list">
+                    <% if (match.team1Lineup && match.team1Lineup.length > 0) { %>
+                        <% match.team1Lineup.forEach(player => { %>
+                        <li><span class="player-icon">👤</span> <%= player %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li style="color: var(--darkgrey);">Lineup not available</li>
+                    <% } %>
+                </ul>
+            </section>
+
+            <section class="card lineup">
+                <h2 class="section-title"><%= match && match.team2 ? match.team2.name : 'Team 2' %> Lineup</h2>
+                <ul class="player-list">
+                    <% if (match.team2Lineup && match.team2Lineup.length > 0) { %>
+                        <% match.team2Lineup.forEach(player => { %>
+                        <li><span class="player-icon">👤</span> <%= player %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li style="color: var(--darkgrey);">Lineup not available</li>
+                    <% } %>
+                </ul>
+            </section>
+
+            <section class="card timeline">
+                <h2 class="section-title">Key Events Timeline</h2>
+                <ul class="events">
+                    <li>
+                        <span class="event-icon">✓</span>
+                        <div class="event-content">
+                            <div class="event-time"><%= match.date %></div>
+                            <div class="event-desc">Match started</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+    </div>
+</main>
+
+<%- include('partials/footer') %>
+

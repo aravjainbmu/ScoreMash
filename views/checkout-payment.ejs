@@ -1,0 +1,195 @@
+<%- include('partials/header', { title: title, currentPage: '', cssFile: 'checkout' }) %>
+
+<div class="container">
+    <div class="checkout-header">
+        <h1>Checkout</h1>
+        <div class="progress-steps">
+            <div class="step completed">
+                <span class="step-number">✓</span>
+                <span class="step-label">Shipping</span>
+            </div>
+            <div class="step active">
+                <span class="step-number">2</span>
+                <span class="step-label">Payment</span>
+            </div>
+            <div class="step">
+                <span class="step-number">3</span>
+                <span class="step-label">Review</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-content">
+        <div class="checkout-form-section">
+            <div class="form-card">
+                <h2>Payment Information</h2>
+                <p class="form-subtitle">Select your preferred payment method.</p>
+                
+                <% if (typeof error !== 'undefined' && error) { %>
+                <div class="error-message" style="background: #fee; color: #c33; padding: 12px; border-radius: 6px; margin-bottom: 20px;">
+                    <%= error %>
+                </div>
+                <% } %>
+                
+                <form class="checkout-form" action="/checkout/payment" method="POST">
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="card" required>
+                                <span>Credit/Debit Card</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="cod" required>
+                                <span>Cash on Delivery</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="cardDetails" style="display: none;">
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardHolder">Card Holder Name</label>
+                            <input type="text" id="cardHolder" name="cardHolder" placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="continue-btn">Continue to Review</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="order-summary-section">
+            <div class="summary-card">
+                <h2>Order Summary</h2>
+                <div class="order-items">
+                    <% if (typeof orderItems !== 'undefined' && orderItems.length > 0) { %>
+                        <% orderItems.forEach(item => { %>
+                        <div class="order-item">
+                            <div class="item-image">
+                                <% if (isValidUrl(item.image)) { %>
+                                    <img src="<%= item.image %>" width="80%" height="80%">
+                                <% } else { %>
+                                    <%= item.image || '🏏' %>
+                                <% } %>
+                            </div>
+                            <div class="item-info">
+                                <div class="item-name"><%= item.name %></div>
+                                <div class="item-qty">Qty: <%= item.quantity || 1 %></div>
+                            </div>
+                            <div class="item-price">$<%= ((item.price || 0) * (item.quantity || 1)).toFixed(2) %></div>
+                        </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="order-item">
+                            <div class="item-image">🏏</div>
+                            <div class="item-info">
+                                <div class="item-name">No items</div>
+                            </div>
+                            <div class="item-price">$0.00</div>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <div class="price-breakdown">
+                    <% 
+                        let orderSubtotal = 0;
+                        if (typeof orderItems !== 'undefined' && orderItems.length > 0) {
+                            orderSubtotal = orderItems.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
+                        }
+                        const orderShipping = 10.00;
+                        const orderTax = orderSubtotal * 0.01;
+                        const orderTotal = orderSubtotal + orderShipping + orderTax;
+                    %>
+                    <div class="price-row">
+                        <span>Subtotal</span>
+                        <span>$<%= orderSubtotal.toFixed(2) %></span>
+                    </div>
+                    <div class="price-row">
+                        <span>Shipping</span>
+                        <span>$<%= orderShipping.toFixed(2) %></span>
+                    </div>
+                    <div class="price-row">
+                        <span>Tax</span>
+                        <span>$<%= orderTax.toFixed(2) %></span>
+                    </div>
+                </div>
+                
+                <div class="order-total">
+                    <span>Total</span>
+                    <span>$<%= orderTotal.toFixed(2) %></span>
+                </div>
+                
+                <p class="tax-note">Prices are inclusive of all applicable taxes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+    const cardDetails = document.getElementById('cardDetails');
+    
+    paymentMethods.forEach(method => {
+        method.addEventListener('change', () => {
+            if (method.value === 'card') {
+                cardDetails.style.display = 'block';
+                document.getElementById('cardNumber').required = true;
+                document.getElementById('cardHolder').required = true;
+                document.getElementById('expiryDate').required = true;
+                document.getElementById('cvv').required = true;
+            } else {
+                cardDetails.style.display = 'none';
+                document.getElementById('cardNumber').required = false;
+                document.getElementById('cardHolder').required = false;
+                document.getElementById('expiryDate').required = false;
+                document.getElementById('cvv').required = false;
+            }
+        });
+    });
+    
+    // Format card number
+    const cardNumber = document.getElementById('cardNumber');
+    if (cardNumber) {
+        cardNumber.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+        });
+    }
+    
+    // Format expiry date
+    const expiryDate = document.getElementById('expiryDate');
+    if (expiryDate) {
+        expiryDate.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+    }
+});
+</script>
+
+<%- include('partials/footer') %>
+
+
+
+

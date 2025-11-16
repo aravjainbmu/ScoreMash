@@ -1,0 +1,641 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+}
+
+:root {
+    --green: #1DC981;
+    --primary: #1DC981;
+    --black: #1a1a1a;
+    --text: #1a1a1a;
+    --grey: #f4f4f4;
+    --card: #f4f4f4;
+    --darkgrey: #5f5f5f;
+    --muted: #5f5f5f;
+    --border: #e5e7eb;
+    --bg: #f6f7f9;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    padding: 0 max(calc((100vw - 1600px) / 2), 20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 1px 5px lightgrey;
+    background-color: white;
+    z-index: 1000;
+}
+
+.navbar .left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--black);
+    font-size: 28px;
+}
+
+.mobile-menu-toggle .material-symbols-outlined {
+    font-size: 28px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.logo-inside {
+    width: 40px;
+    height: 40px;
+    background-color: var(--green);
+    border-radius: 8px;
+    position: relative;
+}
+
+.logo-inside::after {
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    height: 14px;
+    width: 14px;
+    outline: 2px solid white;
+    border-radius: 2px;
+    rotate: 45deg;
+}
+
+
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a, .nav-buttons a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 14px;
+    color: var(--darkgrey);
+}
+
+a.current {
+    color: var(--green);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+    align-items: center;
+}
+
+.nav-buttons a {
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.nav-buttons span {
+    white-space: nowrap;
+}
+
+#signin {
+    border: 1px solid #DEE1E6;
+}
+
+#signup {
+    color: white; 
+    background-color: var(--green);
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 80px auto 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    z-index: 10;
+}
+
+.hero {
+    height: 600px;
+    display: flex;
+    padding-block: 120px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.hero .left, .hero .right {
+    width: 568px;
+}
+
+.hero .left h1 {
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--black);
+    margin-bottom: 31px;
+}
+
+.hero .left p {
+    font-size: 18px;
+    color: var(--darkgrey);
+    margin-bottom: 37px;
+}
+
+.hero .left a {
+    color: white;
+    background-color: var(--green);
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.hero .right img {
+    width: 100%;
+    height: 70%;
+}
+
+.featured, .other-live-matches {
+    padding-block: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    align-items: center;
+}
+
+.featured h2, .other-live-matches h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.featured-match-card {
+    width: 790px;
+    background-color: var(--grey);
+    border-radius: 10px;
+    padding: 34px 20px;
+    text-align: center;
+}
+
+.live, .finished, .inprogress {
+    border-radius: 15px;
+    padding: 3px 12px;
+    font-size: 12px;
+}
+
+.live {
+    background-color: var(--green);
+    color: white;
+}
+
+.finished, .inprogress {
+    outline: 1px solid #e1e1e1;
+    color: var(--black);
+}
+
+.team-data {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34px;
+}
+
+.team {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.team span {
+    margin-left: 16px;
+}
+
+.score {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.match-data {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.md-title {
+    font-size: 14px;
+    color: var(--darkgrey);
+    margin-bottom: 2px;
+}
+
+.md-value {
+    font-size: 18px;
+    color: var(--black);
+}
+
+.featured-status {
+    color: var(--darkgrey);
+    margin-top: 38px;
+    margin-bottom: 22px;
+    font-size: 16px;
+}
+
+.featured a {
+    float: right;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #e1e1e1;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.ol-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 24px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.ol-card {
+    background-color: var(--grey);
+    border-radius: 10px;
+    padding: 24px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    min-height: 200px;
+}
+
+.ol-card .status-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border-radius: 15px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.ol-card .status-badge.live {
+    background-color: var(--green);
+    color: white;
+}
+
+.ol-card .status-badge.finished {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.ol-card .status-badge.upcoming {
+    background-color: #e5e7eb;
+    color: var(--darkgrey);
+}
+
+.time {
+    font-size: 14px;
+    color: var(--darkgrey);
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.ol-card .team-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.ol-card .team {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ol-card .team span {
+    margin-left: 0;
+}
+
+.ol-card .score {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.match-status {
+    color: var(--darkgrey);
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}   
+
+
+.footer {
+    padding: 0 max(calc((100vw - 1600px) / 2), 20px);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f3f4f6;
+    color: #565d6d;
+}
+
+.footer .logo {
+    color: #565d6d;
+}
+
+.footer .logo-inside {
+    background-color: #565d6d;
+}
+
+.footer-nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-nav-links a:visited {
+    color: #565d6d;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .ol-cards {
+        grid-template-columns: 1fr 1fr;
+        max-width: 1200px;
+    }
+    
+    .featured-match-card {
+        width: 90%;
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .navbar {
+        padding: 0 20px;
+    }
+    
+    .navbar .left {
+        gap: 20px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .nav-links a {
+        font-size: 13px;
+    }
+    
+    .nav-buttons {
+        gap: 12px;
+    }
+    
+    .nav-buttons a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .nav-buttons span {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding-inline: 16px;
+        height: 70px;
+    }
+    
+    .navbar .left {
+        gap: 12px;
+    }
+    
+    .logo {
+        font-size: 22px;
+    }
+    
+    .logo-inside {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        gap: 0;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .nav-links a {
+        padding: 12px 16px;
+        width: 100%;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+    
+    .nav-links a:hover {
+        background-color: var(--grey);
+    }
+    
+    .nav-buttons {
+        gap: 8px;
+    }
+    
+    .nav-buttons a {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+    
+    .nav-buttons a span.material-symbols-outlined {
+        font-size: 20px;
+    }
+    
+    .nav-buttons > span {
+        display: none;
+    }
+    
+    .container {
+        padding: 0 16px;
+        margin-top: 70px;
+    }
+    
+    .hero {
+        height: auto;
+        flex-direction: column;
+        padding-block: 60px;
+        gap: 40px;
+    }
+    
+    .hero .left, .hero .right {
+        width: 100%;
+    }
+    
+    .hero .left h1 {
+        font-size: 32px;
+    }
+    
+    .hero .left p {
+        font-size: 16px;
+    }
+    
+    .hero .right img {
+        height: auto;
+        max-height: 300px;
+        object-fit: cover;
+    }
+    
+    .featured, .other-live-matches {
+        padding-block: 60px;
+        gap: 30px;
+    }
+    
+    .featured h2, .other-live-matches h2 {
+        font-size: 28px;
+    }
+    
+    .featured-match-card {
+        width: 100%;
+        padding: 24px 16px;
+    }
+    
+    .ol-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer {
+        flex-direction: column;
+        height: auto;
+        padding: 30px 20px;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .footer-nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 12px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .nav-buttons {
+        gap: 6px;
+    }
+    
+    .nav-buttons a {
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+    
+    .nav-buttons a span.material-symbols-outlined {
+        font-size: 18px;
+    }
+    
+    .container {
+        padding: 0 12px;
+    }
+    
+    .footer {
+        padding: 24px 12px;
+    }
+    
+    .footer-nav-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero .left h1 {
+        font-size: 24px;
+    }
+    
+    .featured h2, .other-live-matches h2 {
+        font-size: 24px;
+    }
+    
+    .team {
+        font-size: 20px;
+    }
+    
+    .score {
+        font-size: 24px;
+    }
+    
+    .ol-card .team {
+        font-size: 16px;
+    }
+    
+    .ol-card .score {
+        font-size: 20px;
+    }
+    
+    .match-data {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

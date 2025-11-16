@@ -1,0 +1,112 @@
+<%- include('partials/header', { title: title, currentPage: 'index' }) %>
+
+<div class="container">
+    <div class="hero">
+        <div class="left">
+            <h1>Experience Cricket Live: Every Ball, Every Boundary, Real-Time.</h1>
+            <p>Get instant updates, ball-by-ball commentary, and in-depth stats for all your favorite cricket matches, right at your fingertips.</p>
+            <a href="/matches">View All Live Matches</a>
+        </div>
+        <div class="right">
+            <img src="/Images/hero.jpg" alt="Cricket Hero">
+        </div>
+    </div>
+
+    <div class="featured">
+        <h2>Featured Live Match</h2>
+        <% if (typeof featuredMatch !== 'undefined' && featuredMatch) { %>
+        <div class="featured-match-card">
+            <span class="live">Live</span>
+            <div class="team-data">
+                <div class="team">
+                    <%= featuredMatch.team1 ? featuredMatch.team1.flag : '🏏' %>
+                    <span><%= featuredMatch.team1 ? featuredMatch.team1.name : 'Team 1' %></span>
+                </div>
+                <% if (featuredMatch.team1 && featuredMatch.team1.score) { %>
+                <div class="score"><%= featuredMatch.team1.score %></div>
+                <% } %>
+            </div>
+            <div class="team-data">
+                <div class="team">
+                    <%= featuredMatch.team2 ? featuredMatch.team2.flag : '🏏' %>
+                    <span><%= featuredMatch.team2 ? featuredMatch.team2.name : 'Team 2' %></span>
+                </div>
+                <% if (featuredMatch.team2 && featuredMatch.team2.score) { %>
+                <div class="score"><%= featuredMatch.team2.score %></div>
+                <% } %>
+            </div>
+            <div class="match-data">
+                <% if (featuredMatch.overs) { %>
+                <div>
+                    <p class="md-title">Overs</p>
+                    <p class="md-value"><%= featuredMatch.overs %></p>
+                </div>
+                <% } %>
+                <% if (featuredMatch.runRate) { %>
+                <div>
+                    <p class="md-title">Run Rate</p>
+                    <p class="md-value"><%= featuredMatch.runRate %></p>
+                </div>
+                <% } %>
+                <% if (featuredMatch.wickets !== undefined) { %>
+                <div>
+                    <p class="md-title">Wickets</p>
+                    <p class="md-value"><%= featuredMatch.wickets %></p>
+                </div>
+                <% } %>
+            </div>
+            <% if (featuredMatch.statusText) { %>
+            <p class="featured-status"><%= featuredMatch.statusText %></p>
+            <% } %>
+            <% if (featuredMatch.id) { %>
+            <a href="/matches/<%= featuredMatch.id %>">View Details</a>
+            <% } else { %>
+            <a href="/matches">View Details</a>
+            <% } %>
+        </div>
+        <% } else { %>
+        <p>No featured match available at the moment.</p>
+        <% } %>
+    </div>
+
+    <div class="other-live-matches">
+        <h2>Other Live Matches</h2>
+        <div class="ol-cards">
+            <% if (otherMatches && otherMatches.length > 0) { %>
+                <% otherMatches.forEach(match => { %>
+                <div class="ol-card">
+                    <span class="status-badge <%= match.status === 'live' ? 'live' : match.status === 'finished' ? 'finished' : 'upcoming' %>"><%= match.status === 'live' ? 'Live' : match.status === 'finished' ? 'Finished' : match.status === 'upcoming' ? 'Upcoming' : match.status %></span>
+                    <p class="time"><%= match.date %></p>
+                    <div class="team-data">
+                        <div class="team">
+                            <%= match.team1 ? match.team1.flag : '🏏' %>
+                            <span><%= match.team1 ? match.team1.name : 'Team 1' %></span>
+                        </div>
+                        <% if (match.team1 && match.team1.score) { %>
+                        <div class="score"><%= match.team1.score %></div>
+                        <% } %>
+                    </div>
+                    <div class="team-data">
+                        <div class="team">
+                            <%= match.team2 ? match.team2.flag : '🏏' %>
+                            <span><%= match.team2 ? match.team2.name : 'Team 2' %></span>
+                        </div>
+                        <% if (match.team2 && match.team2.score) { %>
+                        <div class="score"><%= match.team2.score %></div>
+                        <% } %>
+                    </div>
+                    <% if (match.statusText) { %>
+                    <p class="match-status"><%= match.statusText %></p>
+                    <% } %>
+                    <% if (match.id) { %>
+                    <a href="/matches/<%= match.id %>" class="view-match-link">View Match</a>
+                    <% } %>
+                </div>
+                <% }); %>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+

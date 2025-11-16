@@ -1,0 +1,92 @@
+<%- include('partials/header', { title: title, currentPage: '', cssFile: 'contact' }) %>
+
+<div class="container">
+
+
+
+    <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Whether you have a question about our products, need support, or want to give feedback, please reach out.</p>
+    </div>
+
+
+    <div class="contact-layout">
+        <div class="contact-form-section">
+            <h2>Send Us a Message</h2>
+
+            <form class="contact-form" action="/contact" method="POST">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Topic of your inquiry" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help you" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Message</button>
+
+            </form>
+
+            <% if (error) { %>
+                <div style="background: #f44336; color: white; padding: 10px; border-radius: 5px; margin-top: 20px;">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <% if (success) { %>
+                <div style="background: #3c3; color: white; padding: 10px; border-radius: 5px; margin-top: 20px;">
+                    <%= success %>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="contact-info-section">
+            <h2>Our Location & Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon material-symbols-outlined">location_on</span>
+                    <div class="contact-details">
+                        <h3>Address</h3>
+                        <p>ScoreMash HQ<br>BML Munjal University, Kapriwas<br>Haryana, 122413, India</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon material-symbols-outlined">phone</span>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <p>+91 01234-56789</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <span class="contact-icon material-symbols-outlined">email</span>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>support@scoremash.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-placeholder">
+                <span class="material-symbols-outlined">map</span>
+                <p>Our Location</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+

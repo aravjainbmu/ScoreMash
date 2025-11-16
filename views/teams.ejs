@@ -1,0 +1,138 @@
+<%- include('partials/header', { title: title, currentPage: 'teams', cssFile: 'teams' }) %>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Team Overview</h1>
+        <p>Search and explore comprehensive statistics for your favorite cricket teams</p>
+        <div class="team-search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="teamSearch" placeholder="Search team by name...">
+        </div>
+    </div>
+
+    <div class="teams-selection-grid" id="teamsGrid" style="<%= selectedTeam ? 'display: none;' : 'display: grid;' %>">
+        <% teams.forEach(team => { %>
+        <div class="team-select-card" data-team-id="<%= team.id %>">
+            <div class="team-flag-select"><%= team.flag || '🏏' %></div>
+            <h3><%= team.name %></h3>
+            <p><%= team.id.toUpperCase() %></p>
+        </div>
+        <% }); %>
+    </div>
+
+    <div class="team-details" id="teamDetails" style="<%= selectedTeam ? 'display: block;' : 'display: none;' %>">
+        <button class="back-to-teams-btn" onclick="backToTeams()">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Back to Teams
+        </button>
+        <div class="team-header">
+            <h1 id="teamName"><%= selectedTeam ? selectedTeam.name : '' %></h1>
+            <p class="team-subtitle" id="teamSubtitle"><%= selectedTeam ? selectedTeam.subtitle : '' %></p>
+        </div>
+
+        <div class="team-roster-section">
+            <h2>Team Roster</h2>
+            <div class="roster-grid" id="rosterGrid">
+                <% if (selectedTeam && selectedTeam.roster && selectedTeam.roster.length > 0) { %>
+                    <% selectedTeam.roster.forEach(player => { %>
+                    <% 
+                        // Create a player ID from the name (lowercase, replace spaces with hyphens)
+                        const playerId = (player.name || 'unknown').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                        const playerUrl = `/players/${playerId}`;
+                    %>
+                    <a href="<%= playerUrl %>" class="roster-card-link">
+                        <div class="roster-card">
+                            <div class="player-photo">👤</div>
+                            <h3><%= player.name %></h3>
+                            <p class="player-role"><%= player.role %></p>
+                            <p class="player-stat"><%= player.stat %></p>
+                        </div>
+                    </a>
+                    <% }); %>
+                <% } else { %>
+                    <p>No roster data available</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="recent-results-section">
+            <h2>Recent Match Results</h2>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Opponent</th>
+                        <th>Date</th>
+                        <th>Result</th>
+                        <th>Score</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                    <% if (selectedTeam && selectedTeam.results && selectedTeam.results.length > 0) { %>
+                        <% selectedTeam.results.forEach(result => { %>
+                        <tr>
+                            <td><%= result.opponent %></td>
+                            <td><%= result.date %></td>
+                            <td><span class="result-<%= result.win ? 'win' : 'loss' %>"><%= result.result %></span></td>
+                            <td><%= result.score %></td>
+                            <td><a href="#" class="view-report">View Report</a></td>
+                        </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr><td colspan="5">No recent results</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="upcoming-fixtures-section">
+            <h2>Upcoming Fixtures</h2>
+            <div class="fixtures-list" id="fixturesList">
+                <% if (selectedTeam && selectedTeam.fixtures && selectedTeam.fixtures.length > 0) { %>
+                    <% selectedTeam.fixtures.forEach(fixture => { %>
+                    <div class="fixture-item">
+                        <div class="fixture-opponent"><%= fixture.opponent %></div>
+                        <div class="fixture-venue"><%= fixture.venue %></div>
+                        <div class="fixture-date"><%= fixture.date %></div>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No upcoming fixtures</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="star-players-section">
+            <h2>Star Player Highlights</h2>
+            <div class="star-players-grid" id="starPlayersGrid">
+                <% if (selectedTeam && selectedTeam.starPlayers && selectedTeam.starPlayers.length > 0) { %>
+                    <% selectedTeam.starPlayers.forEach(player => { %>
+                    <div class="star-player-card">
+                        <div class="star-player-image">🏏</div>
+                        <div class="star-player-content">
+                            <h3><%= player.name %></h3>
+                            <p class="star-player-role"><%= player.role %></p>
+                            <p class="star-player-highlight"><%= player.highlight %></p>
+                            <p class="star-player-desc"><%= player.desc %></p>
+                        </div>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No star players data available</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Pass teams data to client
+    window.teamsData = {
+        <% teams.forEach((team, index) => { %>
+        '<%= team.id %>': <%- JSON.stringify(team) %><%= index < teams.length - 1 ? ',' : '' %>
+        <% }); %>
+    };
+</script>
+
+<%- include('partials/footer', { jsFile: 'teams' }) %>
+

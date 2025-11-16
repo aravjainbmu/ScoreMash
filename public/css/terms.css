@@ -1,0 +1,130 @@
+.terms-header {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.terms-header h1 {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 24px;
+}
+
+.terms-header p {
+    font-size: 16px;
+    color: var(--darkgrey);
+    line-height: 1.8;
+    text-align: left;
+}
+
+.terms-content {
+    max-width: 900px;
+    margin: 0 auto 60px;
+}
+
+.terms-section {
+    background-color: var(--grey);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+}
+
+.terms-section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 16px;
+}
+
+.terms-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.terms-section p {
+    font-size: 15px;
+    color: var(--darkgrey);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.terms-section ul {
+    margin-left: 24px;
+    margin-bottom: 16px;
+}
+
+.terms-section li {
+    font-size: 15px;
+    color: var(--darkgrey);
+    line-height: 1.8;
+    margin-bottom: 8px;
+}
+
+.terms-section a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-section a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .terms-header,
+    .terms-content {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .terms-header {
+        padding: 40px 0 30px;
+        margin-bottom: 40px;
+    }
+    
+    .terms-header h1 {
+        font-size: 32px;
+    }
+    
+    .terms-header p {
+        font-size: 14px;
+    }
+    
+    .terms-content {
+        margin-bottom: 40px;
+    }
+    
+    .terms-section {
+        padding: 24px 20px;
+    }
+    
+    .terms-section h2 {
+        font-size: 20px;
+    }
+    
+    .terms-section h3 {
+        font-size: 16px;
+    }
+    
+    .terms-section p,
+    .terms-section li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .terms-header h1 {
+        font-size: 28px;
+    }
+    
+    .terms-section {
+        padding: 20px 16px;
+    }
+}
+

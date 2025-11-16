@@ -1,0 +1,365 @@
+.checkout-header {
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.checkout-header h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 40px;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--grey);
+    color: var(--darkgrey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.step.active .step-number {
+    background-color: var(--green);
+    color: white;
+}
+
+.step-label {
+    font-size: 14px;
+    color: var(--darkgrey);
+    font-weight: 500;
+}
+
+.step.active .step-label {
+    color: var(--green);
+}
+
+.step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    width: 40px;
+    height: 2px;
+    background-color: #e5e7eb;
+}
+
+.step.active:not(:last-child)::after {
+    background-color: var(--green);
+}
+
+.checkout-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.form-card {
+    background-color: var(--grey);
+    border-radius: 12px;
+    padding: 32px;
+}
+
+.form-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 8px;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: var(--darkgrey);
+    margin-bottom: 32px;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    background-color: white;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+.continue-btn {
+    padding: 14px 32px;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+.continue-btn:hover {
+    background-color: #1ab870;
+}
+
+.summary-card {
+    background-color: var(--grey);
+    border-radius: 12px;
+    padding: 24px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.summary-card h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 24px;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.order-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.order-item .item-image {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 4px;
+}
+
+.item-qty {
+    font-size: 12px;
+    color: var(--darkgrey);
+}
+
+.order-item .item-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: var(--darkgrey);
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black);
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    margin-bottom: 12px;
+}
+
+.tax-note {
+    font-size: 12px;
+    color: var(--darkgrey);
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .checkout-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-card {
+        position: static;
+    }
+}
+
+.step.completed .step-number {
+    background-color: var(--green);
+    color: white;
+}
+
+.step.completed .step-label {
+    color: var(--green);
+}
+
+@media (max-width: 768px) {
+    .checkout-header {
+        padding: 40px 0 30px;
+    }
+    
+    .checkout-header h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .progress-steps {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .step {
+        flex: 0 0 auto;
+    }
+    
+    .step:not(:last-child)::after {
+        width: 15px;
+        left: 45px;
+    }
+    
+    .step-label {
+        font-size: 12px;
+    }
+    
+    .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .form-card {
+        padding: 24px 20px;
+    }
+    
+    .form-card h2 {
+        font-size: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-card {
+        padding: 20px;
+    }
+    
+    .summary-card h2 {
+        font-size: 20px;
+    }
+    
+    .order-item {
+        flex-wrap: wrap;
+    }
+    
+    .continue-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-header h1 {
+        font-size: 24px;
+    }
+    
+    .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .step-label {
+        font-size: 11px;
+    }
+    
+    .step:not(:last-child)::after {
+        width: 10px;
+        left: 40px;
+    }
+    
+    .form-card {
+        padding: 20px 16px;
+    }
+    
+    .summary-card {
+        padding: 16px;
+    }
+}
+
+

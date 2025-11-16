@@ -1,0 +1,212 @@
+<%- include('partials/header', { title: title, currentPage: '', cssFile: 'checkout' }) %>
+
+<div class="container">
+    <div class="checkout-header">
+        <h1>Checkout</h1>
+        <div class="progress-steps">
+            <div class="step completed">
+                <span class="step-number">✓</span>
+                <span class="step-label">Shipping</span>
+            </div>
+            <div class="step completed">
+                <span class="step-number">✓</span>
+                <span class="step-label">Payment</span>
+            </div>
+            <div class="step active">
+                <span class="step-number">3</span>
+                <span class="step-label">Review</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkout-content">
+        <div class="checkout-form-section">
+            <div class="form-card">
+                <h2>Review Your Order</h2>
+                <p class="form-subtitle">Please review your order details before placing it.</p>
+                
+                <div class="review-section">
+                    <h3>Shipping Address</h3>
+                    <div class="review-info">
+                        <p><strong><%= shippingInfo.firstName %> <%= shippingInfo.lastName %></strong></p>
+                        <p><%= shippingInfo.address %></p>
+                        <p><%= shippingInfo.city %>, <%= shippingInfo.state %> <%= shippingInfo.postalCode %></p>
+                        <p><%= shippingInfo.country %></p>
+                    </div>
+                </div>
+                
+                <div class="review-section">
+                    <h3>Payment Method</h3>
+                    <div class="review-info">
+                        <p><strong><%= paymentInfo.method === 'card' ? 'Credit/Debit Card' : 'Cash on Delivery' %></strong></p>
+                        <% if (paymentInfo.method === 'card' && paymentInfo.cardNumber) { %>
+                        <p>Card ending in: ****<%= paymentInfo.cardNumber %></p>
+                        <% if (paymentInfo.cardHolder) { %>
+                        <p>Card Holder: <%= paymentInfo.cardHolder %></p>
+                        <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                
+                <form action="/checkout/review" method="POST">
+                    <button type="submit" class="continue-btn" style="width: 100%;">Place Order</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="order-summary-section">
+            <div class="summary-card">
+                <h2>Order Summary</h2>
+                <div class="order-items">
+                    <% if (typeof orderItems !== 'undefined' && orderItems.length > 0) { %>
+                        <% orderItems.forEach(item => { %>
+                        <div class="order-item">
+                            <div class="item-image">
+                                <% if (isValidUrl(item.image)) { %>
+                                    <img src="<%= item.image %>" width="80%" height="80%">
+                                <% } else { %>
+                                    <%= item.image || '🏏' %>
+                                <% } %>
+                            </div>
+                            <div class="item-info">
+                                <div class="item-name"><%= item.name %></div>
+                                <div class="item-qty">Qty: <%= item.quantity || 1 %></div>
+                            </div>
+                            <div class="item-price">$<%= ((item.price || 0) * (item.quantity || 1)).toFixed(2) %></div>
+                        </div>
+                        <% }); %>
+                    <% } else { %>
+                        <div class="order-item">
+                            <div class="item-image">🏏</div>
+                            <div class="item-info">
+                                <div class="item-name">No items</div>
+                            </div>
+                            <div class="item-price">$0.00</div>
+                        </div>
+                    <% } %>
+                </div>
+                
+                <div class="price-breakdown">
+                    <div class="price-row">
+                        <span>Subtotal</span>
+                        <span>$<%= subtotal.toFixed(2) %></span>
+                    </div>
+                    <div class="price-row">
+                        <span>Shipping</span>
+                        <span>$<%= shippingCost.toFixed(2) %></span>
+                    </div>
+                    <div class="price-row">
+                        <span>Tax</span>
+                        <span>$<%= tax.toFixed(2) %></span>
+                    </div>
+                </div>
+                
+                <div class="order-total">
+                    <span>Total</span>
+                    <span>$<%= total.toFixed(2) %></span>
+                </div>
+                
+                <p class="tax-note">Prices are inclusive of all applicable taxes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.review-section {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.review-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 24px;
+}
+
+.review-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 12px;
+}
+
+.review-info {
+    color: var(--darkgrey);
+    line-height: 1.8;
+}
+
+.review-info p {
+    margin: 4px 0;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.payment-option:hover {
+    border-color: var(--green);
+    background-color: #f0fdf4;
+}
+
+.payment-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.payment-option input[type="radio"]:checked + span {
+    font-weight: 600;
+    color: var(--green);
+}
+
+.payment-option:has(input[type="radio"]:checked) {
+    border-color: var(--green);
+    background-color: #f0fdf4;
+}
+
+@media (max-width: 768px) {
+    .container > div {
+        margin: 40px auto;
+        padding: 0 16px;
+    }
+    
+    .form-card {
+        padding: 20px;
+    }
+    
+    .review-section h3 {
+        font-size: 16px;
+    }
+    
+    .payment-option {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-card {
+        padding: 16px;
+    }
+    
+    .review-section h3 {
+        font-size: 14px;
+    }
+}
+</style>
+
+<%- include('partials/footer') %>
+

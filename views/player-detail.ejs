@@ -1,0 +1,265 @@
+<%- include('partials/header', { title: title, currentPage: 'players', cssFile: 'players' }) %>
+
+<div class="container">
+    <div class="player-detail-header">
+        <a href="/players" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Back to Players
+        </a>
+        
+        <div class="player-profile-card">
+            <div class="player-profile-image">
+                <div class="player-avatar">👤</div>
+                <% if (player.teamFlag) { %>
+                    <div class="team-flag-badge"><%= player.teamFlag %></div>
+                <% } %>
+            </div>
+            <div class="player-profile-info">
+                <h1><%= player.name %></h1>
+                <div class="player-meta">
+                    <span class="player-role-badge"><%= player.role || 'Player' %></span>
+                    <span class="player-team"><%= player.team || 'N/A' %></span>
+                </div>
+                <% if (player.stats) { %>
+                <div class="player-quick-stats">
+                    <div class="quick-stat">
+                        <span class="stat-icon">🏏</span>
+                        <div class="stat-details">
+                            <span class="stat-label">Runs</span>
+                            <span class="stat-number"><%= player.stats.runs || 0 %></span>
+                        </div>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="stat-icon">📊</span>
+                        <div class="stat-details">
+                            <span class="stat-label">Average</span>
+                            <span class="stat-number"><%= player.stats.average || 0 %></span>
+                        </div>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="stat-icon">🎯</span>
+                        <div class="stat-details">
+                            <span class="stat-label">Wickets</span>
+                            <span class="stat-number"><%= player.stats.wickets || 0 %></span>
+                        </div>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="stat-icon">⚡</span>
+                        <div class="stat-details">
+                            <span class="stat-label">Strike Rate</span>
+                            <span class="stat-number"><%= player.stats.strikeRate || 0 %></span>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="player-detail-tabs">
+        <button class="tab-btn active" data-tab="career">
+            <span class="material-symbols-outlined">history</span>
+            Career
+        </button>
+        <button class="tab-btn" data-tab="recent">
+            <span class="material-symbols-outlined">trending_up</span>
+            Recent
+        </button>
+    </div>
+
+    <div class="tab-content active" id="career">
+        <div class="stats-section">
+            <div class="stats-header">
+                <span class="stats-icon">🏏</span>
+                <h2>Career Batting Statistics</h2>
+            </div>
+            <% if (player.careerBatting && player.careerBatting.length > 0) { %>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>MATCH TYPE</th>
+                            <th>MATCHES</th>
+                            <th>INNINGS</th>
+                            <th>RUNS</th>
+                            <th>HS</th>
+                            <th>AVG</th>
+                            <th>SR</th>
+                            <th>100s</th>
+                            <th>50s</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% player.careerBatting.forEach(stat => { %>
+                        <tr>
+                            <td><%= stat.type %></td>
+                            <td><%= stat.matches %></td>
+                            <td><%= stat.innings %></td>
+                            <td><%= stat.runs %></td>
+                            <td><%= stat.hs %></td>
+                            <td><%= stat.avg %></td>
+                            <td><%= stat.sr %></td>
+                            <td><%= stat['100s'] %></td>
+                            <td><%= stat['50s'] %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No career batting statistics available</p>
+            <% } %>
+
+            <div class="stats-header" style="margin-top: 40px;">
+                <span class="stats-icon">🎯</span>
+                <h2>Career Bowling Statistics</h2>
+            </div>
+            <% if (player.careerBowling && player.careerBowling.length > 0) { %>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>MATCH TYPE</th>
+                            <th>MATCHES</th>
+                            <th>INNINGS</th>
+                            <th>OVERS</th>
+                            <th>MAIDENS</th>
+                            <th>RUNS</th>
+                            <th>WICKETS</th>
+                            <th>ECONOMY</th>
+                            <th>AVG</th>
+                            <th>SR</th>
+                            <th>5W</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% player.careerBowling.forEach(stat => { %>
+                        <tr>
+                            <td><%= stat.type %></td>
+                            <td><%= stat.matches %></td>
+                            <td><%= stat.innings %></td>
+                            <td><%= stat.overs %></td>
+                            <td><%= stat.maidens %></td>
+                            <td><%= stat.runs %></td>
+                            <td><%= stat.wickets %></td>
+                            <td><%= stat.economy %></td>
+                            <td><%= stat.average %></td>
+                            <td><%= stat.strikeRate %></td>
+                            <td><%= stat['5w'] %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No career bowling statistics available</p>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="tab-content" id="recent">
+        <div class="stats-section">
+            <div class="stats-header">
+                <span class="stats-icon">📈</span>
+                <h2>Recent Batting Statistics</h2>
+            </div>
+            <% if (player.recentBatting && player.recentBatting.length > 0) { %>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>MATCH TYPE</th>
+                            <th>MATCHES</th>
+                            <th>INNINGS</th>
+                            <th>RUNS</th>
+                            <th>HS</th>
+                            <th>AVG</th>
+                            <th>SR</th>
+                            <th>100s</th>
+                            <th>50s</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% player.recentBatting.forEach(stat => { %>
+                        <tr>
+                            <td><%= stat.type %></td>
+                            <td><%= stat.matches %></td>
+                            <td><%= stat.innings %></td>
+                            <td><%= stat.runs %></td>
+                            <td><%= stat.hs %></td>
+                            <td><%= stat.avg %></td>
+                            <td><%= stat.sr %></td>
+                            <td><%= stat['100s'] %></td>
+                            <td><%= stat['50s'] %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No recent batting statistics available</p>
+            <% } %>
+
+            <div class="stats-header" style="margin-top: 40px;">
+                <span class="stats-icon">📊</span>
+                <h2>Recent Bowling Statistics</h2>
+            </div>
+            <% if (player.recentBowling && player.recentBowling.length > 0) { %>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>MATCH TYPE</th>
+                            <th>MATCHES</th>
+                            <th>INNINGS</th>
+                            <th>OVERS</th>
+                            <th>MAIDENS</th>
+                            <th>RUNS</th>
+                            <th>WICKETS</th>
+                            <th>ECONOMY</th>
+                            <th>AVG</th>
+                            <th>SR</th>
+                            <th>5W</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% player.recentBowling.forEach(stat => { %>
+                        <tr>
+                            <td><%= stat.type %></td>
+                            <td><%= stat.matches %></td>
+                            <td><%= stat.innings %></td>
+                            <td><%= stat.overs %></td>
+                            <td><%= stat.maidens %></td>
+                            <td><%= stat.runs %></td>
+                            <td><%= stat.wickets %></td>
+                            <td><%= stat.economy %></td>
+                            <td><%= stat.average %></td>
+                            <td><%= stat.strikeRate %></td>
+                            <td><%= stat['5w'] %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <p>No recent bowling statistics available</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.dataset.tab;
+            
+            // Remove active class from all tabs and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            this.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+});
+</script>
+
+<%- include('partials/footer') %>
+

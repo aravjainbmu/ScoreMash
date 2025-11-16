@@ -1,0 +1,290 @@
+<%- include('partials/header', { title: title, currentPage: 'shop', cssFile: 'shop' }) %>
+
+<div class="container">
+    <div class="product-detail">
+        <% if (typeof product !== 'undefined' && product) { %>
+        <div class="product-detail-layout">
+            <div class="product-image-section">
+                <div class="product-main-image">
+                    <% if (isValidUrl(product.image)) { %>
+                        <img src="<%= product.image %>" width="80%" height="80%">
+                    <% } else { %>
+                        <%= product.image || '🏏' %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="product-info-section">
+                <div class="product-brand"><%= product.brand %></div>
+                <h1><%= product.name %></h1>
+                <div class="product-price">$<%= product.price.toFixed(2) %></div>
+                <div class="product-rating">
+                    <span class="stars">
+                        <% for (let i = 0; i < 5; i++) { %>
+                            <% if (i < Math.floor(averageRating || 0)) { %>★<% } else { %>☆<% } %>
+                        <% } %>
+                    </span>
+                    <span class="rating-text">(<%= reviewCount || 0 %> reviews)</span>
+                </div>
+                <p class="product-description"><%= product.description || 'High-quality cricket equipment.' %></p>
+                <div class="product-stock" style="margin-bottom: 20px; color: var(--darkgrey);">
+                    <strong>Stock Available:</strong> <%= product.stock || 0 %> items
+                </div>
+                <div class="product-actions">
+                    <input type="number" value="1" min="1" max="<%= product.stock || 0 %>" class="qty-input" <%- product.stock <= 0 ? ' disabled style="opacity:0.5;cursor:not-allowed;"' : '' %>>
+                    <button class="add-to-cart-btn" data-product-id="<%= product.id %>" <%= product.stock <= 0 ? 'disabled' : '' %> style="margin-block:0;<%= product.stock <= 0 ? 'opacity:0.5;cursor:not-allowed;' : ''%>">
+                        <%= product.stock <= 0 ? 'Out of Stock' : 'Add to Cart' %>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Reviews Section -->
+        <div class="reviews-section" style="margin-top: 60px; padding-top: 40px; border-top: 2px solid #e5e7eb;">
+            <h2 style="font-size: 28px; font-weight: 600; margin-bottom: 30px; color: var(--black);">Customer Reviews</h2>
+            
+            <!-- Add Review Form (only for logged-in users) -->
+            <% if (typeof user !== 'undefined' && user && !user.isAdmin) { %>
+            <div class="add-review-section" style="background: var(--grey); padding: 24px; border-radius: 12px; margin-bottom: 40px;">
+                <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 20px; color: var(--black);">
+                    <%= userReview ? 'Update Your Review' : 'Write a Review' %>
+                </h3>
+                <form id="reviewForm" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <label style="display: block; font-weight: 500; margin-bottom: 8px; color: var(--black);">Rating</label>
+                        <div class="rating-input" style="display: flex; gap: 8px;">
+                            <% for (let i = 1; i <= 5; i++) { %>
+                            <button type="button" class="star-btn" data-rating="<%= i %>" style="background: none; border: none; font-size: 32px; cursor: pointer; color: <%= userReview && userReview.rating >= i ? '#fbbf24' : '#d1d5db' %>; padding: 0;">
+                                ★
+                            </button>
+                            <% } %>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" value="<%= userReview ? userReview.rating : '' %>" required>
+                    </div>
+                    <div>
+                        <label for="comment" style="display: block; font-weight: 500; margin-bottom: 8px; color: var(--black);">Your Review</label>
+                        <textarea id="comment" name="comment" rows="4" required style="width: 100%; padding: 12px; border: 1px solid #e5e7eb; border-radius: 6px; font-family: 'Poppins', sans-serif; resize: vertical;"><%= userReview ? userReview.comment : '' %></textarea>
+                    </div>
+                    <button type="submit" class="save-btn" style="align-self: flex-start; padding: 12px 32px; background-color: var(--green); color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: 500; cursor: pointer;">
+                        <%= userReview ? 'Update Review' : 'Submit Review' %>
+                    </button>
+                </form>
+            </div>
+            <% } else if (typeof user === 'undefined' || !user) { %>
+            <div style="background: var(--grey); padding: 20px; border-radius: 12px; margin-bottom: 40px; text-align: center;">
+                <p style="color: var(--darkgrey); margin-bottom: 12px;">Please <a href="/auth/signin" style="color: var(--green); text-decoration: none; font-weight: 500;">login</a> to write a review</p>
+            </div>
+            <% } %>
+            
+            <!-- Reviews List -->
+            <div class="reviews-list">
+                <% if (product.userReviews && product.userReviews.length > 0) { %>
+                    <% product.userReviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(review => { %>
+                    <div class="review-item" style="background: white; padding: 24px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #e5e7eb;">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+                            <div>
+                                <div style="font-weight: 600; font-size: 16px; color: var(--black); margin-bottom: 4px;"><%= review.userName %></div>
+                                <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                    <% for (let i = 0; i < 5; i++) { %>
+                                        <span style="color: <%= i < review.rating ? '#fbbf24' : '#d1d5db' %>; font-size: 16px;">★</span>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div style="font-size: 14px; color: var(--darkgrey);">
+                                <%= new Date(review.createdAt).toLocaleDateString() %>
+                            </div>
+                        </div>
+                        <p style="color: var(--darkgrey); line-height: 1.6; margin: 0;"><%= review.comment %></p>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                    <div style="text-align: center; padding: 40px; color: var(--darkgrey);">
+                        <p>No reviews yet. Be the first to review this product!</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <% } else { %>
+        <p>Product not found</p>
+        <% } %>
+    </div>
+</div>
+
+
+<script>
+// Product detail page - handle add to cart and reviews
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartBtn = document.querySelector('.add-to-cart-btn');
+    const qtyInput = document.querySelector('.qty-input');
+    
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', async () => {
+            const productId = addToCartBtn.dataset.productId;
+            const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+            
+            if (!productId) {
+                showNotification('Product ID not found', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId, quantity })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showNotification('Product added to cart!');
+                    updateCartCount();
+                } else {
+                    if (response.status === 401) {
+                        showNotification('Please login to add items to cart', 'error');
+                        setTimeout(() => {
+                            window.location.href = '/auth/signin';
+                        }, 2000);
+                    } else if (response.status === 403) {
+                        showNotification('Admins cannot add items to cart', 'error');
+                    } else {
+                        showNotification(result.error || 'Failed to add product to cart', 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                showNotification('Error adding product to cart', 'error');
+            }
+        });
+    }
+    
+    // Handle star rating selection
+    const starButtons = document.querySelectorAll('.star-btn');
+    const ratingInput = document.getElementById('rating');
+    
+    starButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            const rating = index + 1;
+            ratingInput.value = rating;
+            
+            // Update star colors
+            starButtons.forEach((b, i) => {
+                b.style.color = i < rating ? '#fbbf24' : '#d1d5db';
+            });
+        });
+    });
+    
+    // Handle review form submission
+    const reviewForm = document.getElementById('reviewForm');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const rating = ratingInput.value;
+            const comment = document.getElementById('comment').value.trim();
+            
+            if (!rating || !comment) {
+                showNotification('Please provide both rating and comment', 'error');
+                return;
+            }
+            
+            const productId = '<%= product.id %>';
+            
+            try {
+                const response = await fetch(`/shop/${productId}/review`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ rating, comment })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification(result.message, 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                } else {
+                    if (response.status === 401) {
+                        showNotification('Please login to add a review', 'error');
+                        setTimeout(() => {
+                            window.location.href = '/auth/signin';
+                        }, 2000);
+                    } else {
+                        showNotification(result.error || 'Error submitting review', 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Error submitting review:', error);
+                showNotification('Error submitting review', 'error');
+            }
+        });
+    }
+    
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: ${type === 'success' ? '#22c55e' : '#ef4444'};
+            color: white;
+            border-radius: 8px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.3s ease;
+        `;
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+    
+    function updateCartCount() {
+        // Use the global cart count updater if available
+        if (typeof window.updateCartCount === 'function') {
+            window.updateCartCount();
+        }
+    }
+    
+    // Add animation keyframes if not already present
+    if (!document.getElementById('product-notification-styles')) {
+        const style = document.createElement('style');
+        style.id = 'product-notification-styles';
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
+</script>
+
+<%- include('partials/footer') %>
+
+
+

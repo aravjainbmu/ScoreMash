@@ -1,0 +1,770 @@
+{
+  "teams": {
+    "csk": {
+      "id": "csk",
+      "name": "Chennai Super Kings",
+      "subtitle": "Defending Champions, Always Fierce!",
+      "flag": "🏏",
+      "roster": [
+        { "name": "M.S. Dhoni", "role": "Wicketkeeper-Batsman / Captain", "stat": "250+ Matches Played" },
+        { "name": "Ravindra Jadeja", "role": "All-rounder", "stat": "132 Wickets Taken" },
+        { "name": "Devon Conway", "role": "Opening Batsman", "stat": "872 Runs Scored (2023)" },
+        { "name": "Ruturaj Gaikwad", "role": "Batsman", "stat": "3 Centuries" },
+        { "name": "Moeen Ali", "role": "All-rounder", "stat": "7.35 Economy Rate" },
+        { "name": "Deepak Chahar", "role": "Bowler", "stat": "4/13 Best Figures" }
+      ],
+      "results": [
+        { "opponent": "Mumbai Indians", "date": "May 12, 2023", "result": "Won by 6 wickets", "score": "CSK 182/4 (18.2) vs MI 177/8", "win": true },
+        { "opponent": "Royal Challengers Bangalore", "date": "May 10, 2023", "result": "Lost by 10 runs", "score": "CSK 165/8 vs RCB 175/6", "win": false },
+        { "opponent": "Gujarat Titans", "date": "May 8, 2023", "result": "Tied (CSK won Super Over)", "score": "CSK 172/8 vs GT 172/7", "win": true },
+        { "opponent": "Kolkata Knight Riders", "date": "May 5, 2023", "result": "Won by 49 runs", "score": "CSK 235/4 vs KKR 186/8", "win": true },
+        { "opponent": "Delhi Capitals", "date": "May 3, 2023", "result": "Won by 27 runs", "score": "CSK 217/4 vs DC 190/9", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs Gujarat Titans", "venue": "M.A. Chidambaram Stadium, Chennai", "date": "Nov 02, 2023" },
+        { "opponent": "vs Rajasthan Royals", "venue": "Sawai Mansingh Stadium, Jaipur", "date": "Nov 05, 2023" },
+        { "opponent": "vs Sunrisers Hyderabad", "venue": "Rajiv Gandhi International Stadium, Hyderabad", "date": "Nov 08, 2023" }
+      ],
+      "starPlayers": [
+        { "name": "M.S. Dhoni", "role": "Wicketkeeper-Batsman / Captain", "highlight": "Avg. Strike Rate in Chases: 138.5 - Finisher Extraordinaire", "desc": "M.S. Dhoni's legendary finishing abilities have made him one of the most successful captains in IPL history. His calm demeanor under pressure and ability to read the game make him an invaluable asset to CSK." },
+        { "name": "Ravindra Jadeja", "role": "All-rounder", "highlight": "Most Man of the Match awards (2023 season) - The Pivot", "desc": "Ravindra Jadeja's all-round excellence makes him the backbone of CSK. His ability to contribute with both bat and ball, along with his exceptional fielding, makes him a complete cricketer." }
+      ]
+    },
+    "mi": {
+      "id": "mi",
+      "name": "Mumbai Indians",
+      "subtitle": "The Blue Brigade, Champions of Excellence!",
+      "flag": "🏏",
+      "roster": [
+        { "name": "Rohit Sharma", "role": "Batsman / Captain", "stat": "200+ Matches Played" },
+        { "name": "Jasprit Bumrah", "role": "Bowler", "stat": "150+ Wickets Taken" },
+        { "name": "Suryakumar Yadav", "role": "Batsman", "stat": "1200+ Runs Scored" },
+        { "name": "Hardik Pandya", "role": "All-rounder", "stat": "8.5 Economy Rate" },
+        { "name": "Ishan Kishan", "role": "Wicketkeeper-Batsman", "stat": "5 Centuries" },
+        { "name": "Tilak Varma", "role": "Batsman", "stat": "2 Centuries" }
+      ],
+      "results": [
+        { "opponent": "Chennai Super Kings", "date": "May 12, 2023", "result": "Lost by 6 wickets", "score": "MI 177/8 vs CSK 182/4 (18.2)", "win": false },
+        { "opponent": "Delhi Capitals", "date": "May 9, 2023", "result": "Won by 5 wickets", "score": "MI 185/5 vs DC 180/8", "win": true },
+        { "opponent": "Royal Challengers Bangalore", "date": "May 7, 2023", "result": "Won by 8 wickets", "score": "MI 192/2 vs RCB 190/6", "win": true },
+        { "opponent": "Kolkata Knight Riders", "date": "May 4, 2023", "result": "Lost by 52 runs", "score": "MI 168/8 vs KKR 220/6", "win": false }
+      ],
+      "fixtures": [
+        { "opponent": "vs Royal Challengers Bangalore", "venue": "Wankhede Stadium, Mumbai", "date": "Nov 03, 2023" },
+        { "opponent": "vs Punjab Kings", "venue": "IS Bindra Stadium, Mohali", "date": "Nov 06, 2023" }
+      ],
+      "starPlayers": [
+        { "name": "Rohit Sharma", "role": "Batsman / Captain", "highlight": "Most IPL Titles as Captain - The Hitman", "desc": "Rohit Sharma's exceptional leadership and batting prowess have led Mumbai Indians to multiple IPL championships. His ability to lead from the front makes him one of the greatest captains in IPL history." },
+        { "name": "Jasprit Bumrah", "role": "Bowler", "highlight": "Best Economy Rate in Death Overs - The Yorker King", "desc": "Jasprit Bumrah's unorthodox action and pinpoint accuracy make him one of the most feared bowlers in world cricket. His ability to bowl yorkers at will in pressure situations is unmatched." }
+      ]
+    },
+    "rcb": {
+      "id": "rcb",
+      "name": "Royal Challengers Bangalore",
+      "subtitle": "Play Bold, Play with Passion!",
+      "flag": "🏏",
+      "roster": [
+        { "name": "Virat Kohli", "role": "Batsman", "stat": "7000+ Runs Scored" },
+        { "name": "Faf du Plessis", "role": "Batsman / Captain", "stat": "500+ Runs (2023)" },
+        { "name": "Glenn Maxwell", "role": "All-rounder", "stat": "400+ Runs, 15 Wickets" },
+        { "name": "Mohammed Siraj", "role": "Bowler", "stat": "50+ Wickets Taken" },
+        { "name": "Dinesh Karthik", "role": "Wicketkeeper-Batsman", "stat": "300+ Runs (2023)" },
+        { "name": "Wanindu Hasaranga", "role": "All-rounder", "stat": "25+ Wickets" }
+      ],
+      "results": [
+        { "opponent": "Chennai Super Kings", "date": "May 10, 2023", "result": "Won by 10 runs", "score": "RCB 175/6 vs CSK 165/8", "win": true },
+        { "opponent": "Mumbai Indians", "date": "May 7, 2023", "result": "Lost by 8 wickets", "score": "RCB 190/6 vs MI 192/2", "win": false },
+        { "opponent": "Sunrisers Hyderabad", "date": "May 5, 2023", "result": "Won by 67 runs", "score": "RCB 192/3 vs SRH 125/10", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs Mumbai Indians", "venue": "M. Chinnaswamy Stadium, Bangalore", "date": "Nov 03, 2023" },
+        { "opponent": "vs Kolkata Knight Riders", "venue": "Eden Gardens, Kolkata", "date": "Nov 07, 2023" }
+      ],
+      "starPlayers": [
+        { "name": "Virat Kohli", "role": "Batsman", "highlight": "Highest Run Scorer in IPL History - The Run Machine", "desc": "Virat Kohli's consistency and ability to score big runs make him one of the greatest batsmen in IPL history. His passion and dedication to the game are unmatched." },
+        { "name": "Glenn Maxwell", "role": "All-rounder", "highlight": "Most Impactful Player - The Big Show", "desc": "Glenn Maxwell's explosive batting and useful bowling make him a key player for RCB. His ability to change the game in a matter of overs is his biggest strength." }
+      ]
+    },
+    "india": {
+      "id": "india",
+      "name": "India",
+      "subtitle": "Men in Blue, Pride of the Nation!",
+      "flag": "🇮🇳",
+      "roster": [
+        { "name": "Rohit Sharma", "role": "Batsman / Captain", "stat": "10,000+ ODI Runs" },
+        { "name": "Virat Kohli", "role": "Batsman", "stat": "13,000+ ODI Runs" },
+        { "name": "Jasprit Bumrah", "role": "Bowler", "stat": "300+ International Wickets" },
+        { "name": "Ravindra Jadeja", "role": "All-rounder", "stat": "250+ Wickets, 2500+ Runs" },
+        { "name": "Rishabh Pant", "role": "Wicketkeeper-Batsman", "stat": "2000+ Test Runs" },
+        { "name": "Mohammed Shami", "role": "Bowler", "stat": "200+ ODI Wickets" }
+      ],
+      "results": [
+        { "opponent": "Australia", "date": "Jan 16, 2025", "result": "Won by 70 runs", "score": "IND 350/5 vs AUS 280/8", "win": true },
+        { "opponent": "England", "date": "Jan 10, 2025", "result": "Won by 5 wickets", "score": "IND 285/5 vs ENG 282/8", "win": true },
+        { "opponent": "South Africa", "date": "Jan 5, 2025", "result": "Lost by 31 runs", "score": "IND 245/8 vs SA 276/9", "win": false }
+      ],
+      "fixtures": [
+        { "opponent": "vs New Zealand", "venue": "Wankhede Stadium, Mumbai", "date": "Jan 25, 2025" },
+        { "opponent": "vs Pakistan", "venue": "Eden Gardens, Kolkata", "date": "Jan 28, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Virat Kohli", "role": "Batsman", "highlight": "50+ ODI Centuries - The Run Machine", "desc": "Virat Kohli's consistency and ability to score centuries at will make him one of the greatest batsmen in world cricket. His fitness and dedication set new standards." },
+        { "name": "Jasprit Bumrah", "role": "Bowler", "highlight": "Best Fast Bowler in World Cricket - The Yorker Specialist", "desc": "Jasprit Bumrah's unorthodox action and ability to bowl at all stages of the game make him one of the most valuable bowlers in world cricket." }
+      ]
+    },
+    "australia": {
+      "id": "australia",
+      "name": "Australia",
+      "subtitle": "The Baggy Greens, Champions of the World!",
+      "flag": "🇦🇺",
+      "roster": [
+        { "name": "Pat Cummins", "role": "Bowler / Captain", "stat": "250+ Test Wickets" },
+        { "name": "Steve Smith", "role": "Batsman", "stat": "9000+ Test Runs" },
+        { "name": "David Warner", "role": "Batsman", "stat": "8000+ ODI Runs" },
+        { "name": "Mitchell Starc", "role": "Bowler", "stat": "300+ ODI Wickets" },
+        { "name": "Glenn Maxwell", "role": "All-rounder", "stat": "3500+ Runs, 60+ Wickets" },
+        { "name": "Marnus Labuschagne", "role": "Batsman", "stat": "3000+ Test Runs" }
+      ],
+      "results": [
+        { "opponent": "India", "date": "Jan 16, 2025", "result": "Lost by 70 runs", "score": "AUS 280/8 vs IND 350/5", "win": false },
+        { "opponent": "England", "date": "Jan 12, 2025", "result": "Won by 6 wickets", "score": "AUS 245/4 vs ENG 241/9", "win": true },
+        { "opponent": "New Zealand", "date": "Jan 8, 2025", "result": "Won by 45 runs", "score": "AUS 320/7 vs NZ 275/9", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs South Africa", "venue": "Melbourne Cricket Ground, Melbourne", "date": "Jan 26, 2025" },
+        { "opponent": "vs West Indies", "venue": "Sydney Cricket Ground, Sydney", "date": "Jan 30, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Steve Smith", "role": "Batsman", "highlight": "Test Average of 60+ - The Modern Great", "desc": "Steve Smith's unorthodox technique and ability to score runs in all conditions make him one of the greatest Test batsmen of the modern era." },
+        { "name": "Pat Cummins", "role": "Bowler / Captain", "highlight": "World's #1 Test Bowler - The Leader", "desc": "Pat Cummins' exceptional pace and accuracy, combined with his leadership skills, make him one of the best fast bowlers and captains in world cricket." }
+      ]
+    },
+    "england": {
+      "id": "england",
+      "name": "England",
+      "subtitle": "The Three Lions, Play with Aggression!",
+      "flag": "🇬🇧",
+      "roster": [
+        { "name": "Ben Stokes", "role": "All-rounder / Captain", "stat": "6000+ Runs, 200+ Wickets" },
+        { "name": "Joe Root", "role": "Batsman", "stat": "11,000+ Test Runs" },
+        { "name": "Jos Buttler", "role": "Wicketkeeper-Batsman", "stat": "5000+ ODI Runs" },
+        { "name": "Jofra Archer", "role": "Bowler", "stat": "150+ International Wickets" },
+        { "name": "Jonny Bairstow", "role": "Wicketkeeper-Batsman", "stat": "6000+ ODI Runs" },
+        { "name": "Stuart Broad", "role": "Bowler", "stat": "600+ Test Wickets" }
+      ],
+      "results": [
+        { "opponent": "India", "date": "Jan 10, 2025", "result": "Lost by 5 wickets", "score": "ENG 282/8 vs IND 285/5", "win": false },
+        { "opponent": "Australia", "date": "Jan 12, 2025", "result": "Lost by 6 wickets", "score": "ENG 241/9 vs AUS 245/4", "win": false },
+        { "opponent": "South Africa", "date": "Jan 6, 2025", "result": "Won by 8 wickets", "score": "ENG 195/2 vs SA 192/10", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs New Zealand", "venue": "Lord's Cricket Ground, London", "date": "Jan 27, 2025" },
+        { "opponent": "vs Pakistan", "venue": "The Oval, London", "date": "Jan 31, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Ben Stokes", "role": "All-rounder / Captain", "highlight": "2019 World Cup Hero - The All-Rounder", "desc": "Ben Stokes' ability to perform under pressure and contribute with both bat and ball makes him one of the most valuable players in world cricket." },
+        { "name": "Joe Root", "role": "Batsman", "highlight": "England's Highest Test Run Scorer - The Anchor", "desc": "Joe Root's elegant batting and ability to score runs consistently make him one of England's greatest batsmen." }
+      ]
+    },
+    "pakistan": {
+      "id": "pakistan",
+      "name": "Pakistan",
+      "subtitle": "The Green Shirts, Passion and Pride!",
+      "flag": "🇵🇰",
+      "roster": [
+        { "name": "Babar Azam", "role": "Batsman / Captain", "stat": "5000+ ODI Runs" },
+        { "name": "Shaheen Afridi", "role": "Bowler", "stat": "200+ International Wickets" },
+        { "name": "Mohammad Rizwan", "role": "Wicketkeeper-Batsman", "stat": "3000+ T20I Runs" },
+        { "name": "Shadab Khan", "role": "All-rounder", "stat": "100+ Wickets, 1000+ Runs" },
+        { "name": "Fakhar Zaman", "role": "Batsman", "stat": "3000+ ODI Runs" },
+        { "name": "Hasan Ali", "role": "Bowler", "stat": "150+ ODI Wickets" }
+      ],
+      "results": [
+        { "opponent": "New Zealand", "date": "Jan 14, 2025", "result": "Won by 8 wickets", "score": "PAK 121/2 vs NZ 120/9", "win": true },
+        { "opponent": "Bangladesh", "date": "Jan 11, 2025", "result": "Won by 5 wickets", "score": "PAK 245/5 vs BAN 242/8", "win": true },
+        { "opponent": "Sri Lanka", "date": "Jan 7, 2025", "result": "Lost by 23 runs", "score": "PAK 220/8 vs SL 243/6", "win": false }
+      ],
+      "fixtures": [
+        { "opponent": "vs India", "venue": "Eden Gardens, Kolkata", "date": "Jan 28, 2025" },
+        { "opponent": "vs England", "venue": "The Oval, London", "date": "Jan 31, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Babar Azam", "role": "Batsman / Captain", "highlight": "World's #1 ODI Batsman - The Elegant", "desc": "Babar Azam's elegant strokeplay and consistency make him one of the best batsmen in world cricket. His leadership has brought stability to Pakistan cricket." },
+        { "name": "Shaheen Afridi", "role": "Bowler", "highlight": "Best Fast Bowler - The Swing Master", "desc": "Shaheen Afridi's ability to swing the ball at pace makes him one of the most dangerous bowlers in world cricket, especially with the new ball." }
+      ]
+    },
+    "newzealand": {
+      "id": "newzealand",
+      "name": "New Zealand",
+      "subtitle": "The Black Caps, Kiwis of Excellence!",
+      "flag": "🇳🇿",
+      "roster": [
+        { "name": "Kane Williamson", "role": "Batsman / Captain", "stat": "8000+ Test Runs" },
+        { "name": "Trent Boult", "role": "Bowler", "stat": "300+ ODI Wickets" },
+        { "name": "Tim Southee", "role": "Bowler", "stat": "350+ Test Wickets" },
+        { "name": "Devon Conway", "role": "Batsman", "stat": "2000+ International Runs" },
+        { "name": "Glenn Phillips", "role": "Batsman", "stat": "1500+ T20I Runs" },
+        { "name": "Lockie Ferguson", "role": "Bowler", "stat": "100+ International Wickets" }
+      ],
+      "results": [
+        { "opponent": "Pakistan", "date": "Jan 14, 2025", "result": "Lost by 8 wickets", "score": "NZ 120/9 vs PAK 121/2", "win": false },
+        { "opponent": "Bangladesh", "date": "Jan 9, 2025", "result": "Won by 7 wickets", "score": "NZ 245/3 vs BAN 242/8", "win": true },
+        { "opponent": "Sri Lanka", "date": "Jan 5, 2025", "result": "Won by 65 runs", "score": "NZ 315/8 vs SL 250/9", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs India", "venue": "Wankhede Stadium, Mumbai", "date": "Jan 25, 2025" },
+        { "opponent": "vs England", "venue": "Lord's Cricket Ground, London", "date": "Jan 27, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Kane Williamson", "role": "Batsman / Captain", "highlight": "World Test Championship Winner - The Gentleman", "desc": "Kane Williamson's calm demeanor and exceptional batting make him one of the most respected cricketers in the world. His leadership led New Zealand to their first World Test Championship." },
+        { "name": "Trent Boult", "role": "Bowler", "highlight": "Swing Bowling Master - The Left-Arm Threat", "desc": "Trent Boult's ability to swing the ball both ways and his accuracy make him one of the best fast bowlers in world cricket." }
+      ]
+    },
+    "southafrica": {
+      "id": "southafrica",
+      "name": "South Africa",
+      "subtitle": "The Proteas, Pride of Africa!",
+      "flag": "🇿🇦",
+      "roster": [
+        { "name": "Temba Bavuma", "role": "Batsman / Captain", "stat": "3000+ ODI Runs" },
+        { "name": "Quinton de Kock", "role": "Wicketkeeper-Batsman", "stat": "6000+ ODI Runs" },
+        { "name": "Kagiso Rabada", "role": "Bowler", "stat": "250+ International Wickets" },
+        { "name": "Aiden Markram", "role": "Batsman", "stat": "4000+ International Runs" },
+        { "name": "Lungi Ngidi", "role": "Bowler", "stat": "100+ ODI Wickets" },
+        { "name": "David Miller", "role": "Batsman", "stat": "4000+ ODI Runs" }
+      ],
+      "results": [
+        { "opponent": "England", "date": "Jan 6, 2025", "result": "Lost by 8 wickets", "score": "SA 192/10 vs ENG 195/2", "win": false },
+        { "opponent": "India", "date": "Jan 5, 2025", "result": "Won by 31 runs", "score": "SA 276/9 vs IND 245/8", "win": true },
+        { "opponent": "Australia", "date": "Jan 3, 2025", "result": "Won by 5 wickets", "score": "SA 245/5 vs AUS 241/9", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs Pakistan", "venue": "Newlands, Cape Town", "date": "Jan 26, 2025" },
+        { "opponent": "vs New Zealand", "venue": "SuperSport Park, Centurion", "date": "Jan 29, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Quinton de Kock", "role": "Wicketkeeper-Batsman", "highlight": "Fastest Century in World Cup - The Aggressor", "desc": "Quinton de Kock's aggressive batting at the top of the order makes him one of the most dangerous openers in world cricket." },
+        { "name": "Kagiso Rabada", "role": "Bowler", "highlight": "World's Fastest Bowler - The Speedster", "desc": "Kagiso Rabada's raw pace and ability to take wickets consistently make him one of the best fast bowlers in world cricket." }
+      ]
+    },
+    "bangladesh": {
+      "id": "bangladesh",
+      "name": "Bangladesh",
+      "subtitle": "The Tigers, Roaring with Passion!",
+      "flag": "🇧🇩",
+      "roster": [
+        { "name": "Shakib Al Hasan", "role": "All-rounder / Captain", "stat": "7000+ Runs, 300+ Wickets" },
+        { "name": "Mushfiqur Rahim", "role": "Wicketkeeper-Batsman", "stat": "7000+ ODI Runs" },
+        { "name": "Tamim Iqbal", "role": "Batsman", "stat": "8000+ ODI Runs" },
+        { "name": "Mustafizur Rahman", "role": "Bowler", "stat": "200+ International Wickets" },
+        { "name": "Mahmudullah", "role": "All-rounder", "stat": "5000+ Runs, 80+ Wickets" },
+        { "name": "Taskin Ahmed", "role": "Bowler", "stat": "100+ ODI Wickets" }
+      ],
+      "results": [
+        { "opponent": "Sri Lanka", "date": "Jan 8, 2025", "result": "Won by 3 wickets", "score": "BAN 165/3 vs SL 162/10", "win": true },
+        { "opponent": "Pakistan", "date": "Jan 11, 2025", "result": "Lost by 5 wickets", "score": "BAN 242/8 vs PAK 245/5", "win": false },
+        { "opponent": "New Zealand", "date": "Jan 9, 2025", "result": "Lost by 7 wickets", "score": "BAN 242/8 vs NZ 245/3", "win": false }
+      ],
+      "fixtures": [
+        { "opponent": "vs India", "venue": "Sher-e-Bangla National Stadium, Dhaka", "date": "Jan 27, 2025" },
+        { "opponent": "vs Afghanistan", "venue": "Zahur Ahmed Chowdhury Stadium, Chittagong", "date": "Jan 30, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Shakib Al Hasan", "role": "All-rounder / Captain", "highlight": "World's #1 All-rounder - The Complete Cricketer", "desc": "Shakib Al Hasan's ability to contribute with both bat and ball makes him one of the most valuable players in world cricket." },
+        { "name": "Tamim Iqbal", "role": "Batsman", "highlight": "Bangladesh's Highest Run Scorer - The Opener", "desc": "Tamim Iqbal's aggressive batting at the top of the order has been instrumental in Bangladesh's success in international cricket." }
+      ]
+    },
+    "srilanka": {
+      "id": "srilanka",
+      "name": "Sri Lanka",
+      "subtitle": "The Lions, Pride of the Island!",
+      "flag": "🇱🇰",
+      "roster": [
+        { "name": "Dasun Shanaka", "role": "All-rounder / Captain", "stat": "2000+ Runs, 50+ Wickets" },
+        { "name": "Kusal Mendis", "role": "Batsman", "stat": "4000+ International Runs" },
+        { "name": "Wanindu Hasaranga", "role": "All-rounder", "stat": "100+ Wickets, 1000+ Runs" },
+        { "name": "Dushmantha Chameera", "role": "Bowler", "stat": "150+ International Wickets" },
+        { "name": "Pathum Nissanka", "role": "Batsman", "stat": "2000+ International Runs" },
+        { "name": "Maheesh Theekshana", "role": "Bowler", "stat": "80+ International Wickets" }
+      ],
+      "results": [
+        { "opponent": "Bangladesh", "date": "Jan 8, 2025", "result": "Lost by 3 wickets", "score": "SL 162/10 vs BAN 165/3", "win": false },
+        { "opponent": "Pakistan", "date": "Jan 7, 2025", "result": "Won by 23 runs", "score": "SL 243/6 vs PAK 220/8", "win": true },
+        { "opponent": "New Zealand", "date": "Jan 5, 2025", "result": "Lost by 65 runs", "score": "SL 250/9 vs NZ 315/8", "win": false }
+      ],
+      "fixtures": [
+        { "opponent": "vs Australia", "venue": "R. Premadasa Stadium, Colombo", "date": "Jan 28, 2025" },
+        { "opponent": "vs West Indies", "venue": "Galle International Stadium, Galle", "date": "Jan 31, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Wanindu Hasaranga", "role": "All-rounder", "highlight": "Best T20I Bowler - The Spinner", "desc": "Wanindu Hasaranga's leg-spin and ability to take wickets in the middle overs make him one of the most valuable players in T20 cricket." },
+        { "name": "Kusal Mendis", "role": "Batsman", "highlight": "Consistent Run Scorer - The Anchor", "desc": "Kusal Mendis' ability to score runs consistently in all formats makes him a key player for Sri Lanka." }
+      ]
+    },
+    "afghanistan": {
+      "id": "afghanistan",
+      "name": "Afghanistan",
+      "subtitle": "The Blue Tigers, Rising Stars!",
+      "flag": "🇦🇫",
+      "roster": [
+        { "name": "Rashid Khan", "role": "All-rounder / Captain", "stat": "400+ Wickets, 1000+ Runs" },
+        { "name": "Mohammad Nabi", "role": "All-rounder", "stat": "3000+ Runs, 150+ Wickets" },
+        { "name": "Rahmanullah Gurbaz", "role": "Wicketkeeper-Batsman", "stat": "2000+ T20I Runs" },
+        { "name": "Mujeeb Ur Rahman", "role": "Bowler", "stat": "200+ International Wickets" },
+        { "name": "Ibrahim Zadran", "role": "Batsman", "stat": "1500+ International Runs" },
+        { "name": "Fazalhaq Farooqi", "role": "Bowler", "stat": "100+ International Wickets" }
+      ],
+      "results": [
+        { "opponent": "Zimbabwe", "date": "Jan 4, 2025", "result": "Won by 6 wickets", "score": "AFG 185/4 vs ZIM 182/8", "win": true },
+        { "opponent": "India", "date": "Jan 2, 2025", "result": "Lost by 8 wickets", "score": "AFG 145/8 vs IND 148/2", "win": false },
+        { "opponent": "Pakistan", "date": "Jan 1, 2025", "result": "Won by 3 wickets", "score": "AFG 220/7 vs PAK 218/9", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs Zimbabwe", "venue": "Wankhede Stadium, Mumbai", "date": "Tomorrow, 7:00 PM IST" },
+        { "opponent": "vs Bangladesh", "venue": "Zahur Ahmed Chowdhury Stadium, Chittagong", "date": "Jan 30, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Rashid Khan", "role": "All-rounder / Captain", "highlight": "World's #1 T20I Bowler - The Magician", "desc": "Rashid Khan's exceptional leg-spin bowling and ability to take wickets consistently make him one of the best bowlers in world cricket." },
+        { "name": "Mohammad Nabi", "role": "All-rounder", "highlight": "Most Experienced Player - The Veteran", "desc": "Mohammad Nabi's all-round abilities and experience make him a crucial player for Afghanistan in all formats of the game." }
+      ]
+    },
+    "zimbabwe": {
+      "id": "zimbabwe",
+      "name": "Zimbabwe",
+      "subtitle": "The Chevrons, Fighting Spirit!",
+      "flag": "🇿🇼",
+      "roster": [
+        { "name": "Craig Ervine", "role": "Batsman / Captain", "stat": "4000+ ODI Runs" },
+        { "name": "Sikandar Raza", "role": "All-rounder", "stat": "3000+ Runs, 100+ Wickets" },
+        { "name": "Sean Williams", "role": "All-rounder", "stat": "4000+ Runs, 80+ Wickets" },
+        { "name": "Blessing Muzarabani", "role": "Bowler", "stat": "100+ International Wickets" },
+        { "name": "Wesley Madhevere", "role": "All-rounder", "stat": "1500+ Runs, 30+ Wickets" },
+        { "name": "Richard Ngarava", "role": "Bowler", "stat": "80+ International Wickets" }
+      ],
+      "results": [
+        { "opponent": "Afghanistan", "date": "Jan 4, 2025", "result": "Lost by 6 wickets", "score": "ZIM 182/8 vs AFG 185/4", "win": false },
+        { "opponent": "Ireland", "date": "Jan 2, 2025", "result": "Won by 4 wickets", "score": "ZIM 245/6 vs IRE 242/8", "win": true },
+        { "opponent": "Scotland", "date": "Jan 1, 2025", "result": "Won by 7 wickets", "score": "ZIM 195/3 vs SCO 192/9", "win": true }
+      ],
+      "fixtures": [
+        { "opponent": "vs Afghanistan", "venue": "Wankhede Stadium, Mumbai", "date": "Tomorrow, 7:00 PM IST" },
+        { "opponent": "vs West Indies", "venue": "Queens Sports Club, Bulawayo", "date": "Jan 29, 2025" }
+      ],
+      "starPlayers": [
+        { "name": "Sikandar Raza", "role": "All-rounder", "highlight": "Zimbabwe's Best All-rounder - The Match Winner", "desc": "Sikandar Raza's ability to contribute with both bat and ball makes him one of the most valuable players for Zimbabwe." },
+        { "name": "Craig Ervine", "role": "Batsman / Captain", "highlight": "Consistent Run Scorer - The Leader", "desc": "Craig Ervine's leadership and consistent batting make him a key player for Zimbabwe in all formats." }
+      ]
+    }
+  },
+  "players": [
+    {
+      "id": "virat-kohli",
+      "name": "Virat Kohli",
+      "team": "India",
+      "teamFlag": "🇮🇳",
+      "role": "Batsman",
+      "stats": {
+        "runs": 17190,
+        "wickets": 4,
+        "average": 58.80,
+        "strikeRate": 83.70,
+        "centuries": 70,
+        "economy": 6.20
+      },
+      "careerBatting": [
+        { "type": "Test", "matches": 100, "innings": 170, "runs": 8700, "hs": 254, "avg": 49.66, "sr": 55.67, "100s": 28, "50s": 38 },
+        { "type": "ODI", "matches": 274, "innings": 258, "runs": 12898, "hs": 183, "avg": 57.32, "sr": 93.82, "100s": 46, "50s": 80 },
+        { "type": "T20I", "matches": 115, "innings": 107, "runs": 4008, "hs": 122, "avg": 52.73, "sr": 137.90, "100s": 1, "50s": 37 }
+      ],
+      "recentBatting": [
+        { "type": "ODI vs AUS", "matches": 1, "innings": 1, "runs": 85, "hs": 85, "avg": 85.00, "sr": 98.83, "100s": 0, "50s": 1 },
+        { "type": "Test vs IND", "matches": 2, "innings": 4, "runs": 120, "hs": 70, "avg": 30.00, "sr": 41.37, "100s": 0, "50s": 1 },
+        { "type": "T20I vs SA", "matches": 3, "innings": 3, "runs": 160, "hs": 80, "avg": 53.33, "sr": 140.00, "100s": 0, "50s": 2 }
+      ],
+      "careerBowling": [],
+      "recentBowling": []
+    },
+    {
+      "id": "jasprit-bumrah",
+      "name": "Jasprit Bumrah",
+      "team": "India",
+      "teamFlag": "🇮🇳",
+      "role": "Bowler",
+      "stats": {
+        "runs": 186,
+        "wickets": 380,
+        "average": 14.30,
+        "strikeRate": 73.10,
+        "centuries": 0,
+        "economy": 4.80
+      },
+      "careerBatting": [],
+      "recentBatting": [],
+      "careerBowling": [
+        { "type": "Test", "matches": 30, "wickets": 140, "runs": 2800, "avg": 20.00, "economy": 2.80, "sr": 42.85 },
+        { "type": "ODI", "matches": 80, "wickets": 128, "runs": 3200, "avg": 25.00, "economy": 4.80, "sr": 31.25 },
+        { "type": "T20I", "matches": 62, "wickets": 74, "runs": 1800, "avg": 24.32, "economy": 6.20, "sr": 23.51 }
+      ],
+      "recentBowling": [
+        { "type": "ODI vs AUS", "matches": 3, "wickets": 8, "runs": 180, "avg": 22.50, "economy": 4.50, "sr": 30.00 },
+        { "type": "Test vs ENG", "matches": 2, "wickets": 12, "runs": 240, "avg": 20.00, "economy": 2.85, "sr": 42.10 }
+      ]
+    },
+    {
+      "id": "ben-stokes",
+      "name": "Ben Stokes",
+      "team": "England",
+      "teamFlag": "🇬🇧",
+      "role": "All-rounder",
+      "stats": {
+        "runs": 3030,
+        "wickets": 214,
+        "average": 30.30,
+        "strikeRate": 88.10,
+        "centuries": 10,
+        "economy": 5.90
+      },
+      "careerBatting": [
+        { "type": "Test", "matches": 95, "innings": 175, "runs": 5750, "hs": 258, "avg": 35.50, "sr": 58.20, "100s": 12, "50s": 28 },
+        { "type": "ODI", "matches": 105, "innings": 98, "runs": 2920, "hs": 102, "avg": 38.90, "sr": 93.50, "100s": 3, "50s": 21 },
+        { "type": "T20I", "matches": 43, "innings": 40, "runs": 585, "hs": 52, "avg": 19.50, "sr": 135.20, "100s": 0, "50s": 1 }
+      ],
+      "recentBatting": [
+        { "type": "Test vs AUS", "matches": 2, "innings": 4, "runs": 180, "hs": 95, "avg": 45.00, "sr": 62.50, "100s": 0, "50s": 1 }
+      ],
+      "careerBowling": [
+        { "type": "Test", "matches": 95, "wickets": 197, "runs": 5200, "avg": 26.40, "economy": 3.20, "sr": 49.50 },
+        { "type": "ODI", "matches": 105, "wickets": 74, "runs": 3200, "avg": 43.24, "economy": 5.90, "sr": 43.90 },
+        { "type": "T20I", "matches": 43, "wickets": 26, "runs": 850, "avg": 32.69, "economy": 8.50, "sr": 23.08 }
+      ],
+      "recentBowling": [
+        { "type": "Test vs AUS", "matches": 2, "wickets": 5, "runs": 180, "avg": 36.00, "economy": 3.20, "sr": 67.50 }
+      ]
+    },
+    {
+      "id": "rashid-khan",
+      "name": "Rashid Khan",
+      "team": "Afghanistan",
+      "teamFlag": "🇦🇫",
+      "role": "Bowler",
+      "stats": {
+        "runs": 705,
+        "wickets": 387,
+        "average": 11.80,
+        "strikeRate": 18.30,
+        "centuries": 0,
+        "economy": 6.40
+      },
+      "careerBatting": [
+        { "type": "ODI", "matches": 95, "innings": 75, "runs": 1200, "hs": 60, "avg": 18.50, "sr": 95.20, "100s": 0, "50s": 2 },
+        { "type": "T20I", "matches": 82, "innings": 65, "runs": 450, "hs": 48, "avg": 12.50, "sr": 125.00, "100s": 0, "50s": 0 }
+      ],
+      "recentBatting": [],
+      "careerBowling": [
+        { "type": "ODI", "matches": 95, "wickets": 172, "runs": 3800, "avg": 22.09, "economy": 4.50, "sr": 29.50 },
+        { "type": "T20I", "matches": 82, "wickets": 130, "runs": 2800, "avg": 21.54, "economy": 6.40, "sr": 20.20 }
+      ],
+      "recentBowling": [
+        { "type": "ODI vs PAK", "matches": 3, "wickets": 7, "runs": 150, "avg": 21.43, "economy": 4.30, "sr": 30.00 },
+        { "type": "T20I vs IND", "matches": 2, "wickets": 5, "runs": 120, "avg": 24.00, "economy": 6.00, "sr": 24.00 }
+      ]
+    },
+    {
+      "id": "babar-azam",
+      "name": "Babar Azam",
+      "team": "Pakistan",
+      "teamFlag": "🇵🇰",
+      "role": "Batsman",
+      "stats": {
+        "runs": 8876,
+        "wickets": 1,
+        "average": 48.30,
+        "strikeRate": 85.50,
+        "centuries": 28,
+        "economy": 5.50
+      },
+      "careerBatting": [
+        { "type": "Test", "matches": 49, "innings": 91, "runs": 3772, "hs": 196, "avg": 47.75, "sr": 55.20, "100s": 9, "50s": 26 },
+        { "type": "ODI", "matches": 108, "innings": 104, "runs": 5409, "hs": 158, "avg": 56.34, "sr": 89.20, "100s": 19, "50s": 28 },
+        { "type": "T20I", "matches": 104, "innings": 98, "runs": 3485, "hs": 122, "avg": 41.49, "sr": 128.40, "100s": 3, "50s": 30 }
+      ],
+      "recentBatting": [
+        { "type": "ODI vs NZ", "matches": 3, "innings": 3, "runs": 185, "hs": 79, "avg": 61.67, "sr": 92.50, "100s": 0, "50s": 2 },
+        { "type": "T20I vs ENG", "matches": 2, "innings": 2, "runs": 120, "hs": 75, "avg": 60.00, "sr": 135.00, "100s": 0, "50s": 1 }
+      ],
+      "careerBowling": [],
+      "recentBowling": []
+    },
+    {
+      "id": "pat-cummins",
+      "name": "Pat Cummins",
+      "team": "Australia",
+      "teamFlag": "🇦🇺",
+      "role": "Bowler",
+      "stats": {
+        "runs": 1008,
+        "wickets": 290,
+        "average": 17.50,
+        "strikeRate": 80.00,
+        "centuries": 0,
+        "economy": 3.20
+      },
+      "careerBatting": [
+        { "type": "Test", "matches": 55, "innings": 85, "runs": 1200, "hs": 63, "avg": 18.50, "sr": 45.20, "100s": 0, "50s": 3 }
+      ],
+      "recentBatting": [],
+      "careerBowling": [
+        { "type": "Test", "matches": 55, "wickets": 220, "runs": 4800, "avg": 21.82, "economy": 2.90, "sr": 45.00 },
+        { "type": "ODI", "matches": 88, "wickets": 141, "runs": 4200, "avg": 29.79, "economy": 5.20, "sr": 34.30 },
+        { "type": "T20I", "matches": 50, "wickets": 55, "runs": 1400, "avg": 25.45, "economy": 7.00, "sr": 21.80 }
+      ],
+      "recentBowling": [
+        { "type": "Test vs IND", "matches": 2, "wickets": 10, "runs": 220, "avg": 22.00, "economy": 2.90, "sr": 45.00 },
+        { "type": "ODI vs ENG", "matches": 3, "wickets": 6, "runs": 180, "avg": 30.00, "economy": 5.20, "sr": 34.30 }
+      ]
+    }
+  ],
+  "matches": {
+    "live": [
+      {
+        "id": "match1",
+        "team1": { "name": "India", "flag": "🇮🇳", "score": "185/4" },
+        "team2": { "name": "Australia", "flag": "🇦🇺", "score": "170/8" },
+        "status": "Live",
+        "overs": "18.3 / 20",
+        "runRate": "9.8",
+        "wickets": 4,
+        "statusText": "India needs 16 runs in 9 balls. Kohli on strike!",
+        "venue": "Sydney Cricket Ground",
+        "date": "Today"
+      },
+      {
+        "id": "match2",
+        "team1": { "name": "England", "flag": "🇬🇧", "score": "245/6" },
+        "team2": { "name": "South Africa", "flag": "🇿🇦", "score": "198/9" },
+        "status": "Live",
+        "overs": "16.0 / 20",
+        "statusText": "England needs 45 runs in 24 balls",
+        "venue": "Lord's Cricket Ground",
+        "date": "Today, 2:30 PM"
+      },
+      {
+        "id": "match3",
+        "team1": { "name": "Bangladesh", "flag": "🇧🇩", "score": "165/3" },
+        "team2": { "name": "Sri Lanka", "flag": "🇱🇰", "score": "162/10" },
+        "status": "Live",
+        "overs": "15.2 / 20",
+        "statusText": "Bangladesh chasing 163",
+        "venue": "Shere Bangla National Stadium",
+        "date": "Today, 3:00 PM"
+      }
+    ],
+    "upcoming": [
+      {
+        "id": "match4",
+        "team1": { "name": "Pakistan", "flag": "🇵🇰" },
+        "team2": { "name": "New Zealand", "flag": "🇳🇿" },
+        "status": "Upcoming",
+        "venue": "Eden Gardens, Kolkata",
+        "date": "Tomorrow, 2:00 PM IST"
+      },
+      {
+        "id": "match5",
+        "team1": { "name": "Afghanistan", "flag": "🇦🇫" },
+        "team2": { "name": "Zimbabwe", "flag": "🇿🇼" },
+        "status": "Upcoming",
+        "venue": "Wankhede Stadium, Mumbai",
+        "date": "Tomorrow, 7:00 PM IST"
+      }
+    ],
+    "finished": [
+      {
+        "id": "match6",
+        "team1": { "name": "Pakistan", "flag": "🇵🇰", "score": "120/9" },
+        "team2": { "name": "New Zealand", "flag": "🇳🇿", "score": "121/2" },
+        "status": "Finished",
+        "statusText": "New Zealand won by 8 wickets",
+        "date": "Yesterday"
+      }
+    ]
+  },
+  "tournaments": {
+    "active": [
+      {
+        "id": "t20-world-cup-2024",
+        "name": "ICC Men's T20 World Cup 2024",
+        "status": "Live",
+        "description": "The premier international Twenty20 cricket tournament, featuring teams from around the globe competing for the championship.",
+        "dates": "June 1 - June 29, 2024",
+        "format": "Twenty20 International",
+        "locations": "USA & West Indies",
+        "pointsTable": [
+          { "team": "India", "played": 5, "won": 4, "lost": 1, "tied": 0, "points": 8, "nrr": 1.245 },
+          { "team": "Australia", "played": 5, "won": 4, "lost": 1, "tied": 0, "points": 8, "nrr": 0.923 },
+          { "team": "England", "played": 5, "won": 3, "lost": 2, "tied": 0, "points": 6, "nrr": 0.456 },
+          { "team": "New Zealand", "played": 5, "won": 3, "lost": 2, "tied": 0, "points": 6, "nrr": 0.234 },
+          { "team": "South Africa", "played": 5, "won": 2, "lost": 3, "tied": 0, "points": 4, "nrr": -0.123 },
+          { "team": "Pakistan", "played": 5, "won": 2, "lost": 3, "tied": 0, "points": 4, "nrr": -0.456 },
+          { "team": "West Indies", "played": 5, "won": 1, "lost": 4, "tied": 0, "points": 2, "nrr": -0.789 },
+          { "team": "Bangladesh", "played": 5, "won": 1, "lost": 4, "tied": 0, "points": 2, "nrr": -1.012 }
+        ],
+        "teams": 20,
+        "matches": [
+          { "id": "t20wc1", "team1": "India", "team2": "Australia", "date": "June 1, 2024", "venue": "Nassau County International Cricket Stadium", "status": "Finished", "result": "India won by 8 wickets" },
+          { "id": "t20wc2", "team1": "England", "team2": "New Zealand", "date": "June 2, 2024", "venue": "Kensington Oval", "status": "Finished", "result": "England won by 5 wickets" },
+          { "id": "t20wc3", "team1": "South Africa", "team2": "Pakistan", "date": "June 3, 2024", "venue": "Providence Stadium", "status": "Scheduled" },
+          { "id": "t20wc4", "team1": "West Indies", "team2": "Bangladesh", "date": "June 4, 2024", "venue": "Brian Lara Cricket Academy", "status": "Scheduled" }
+        ]
+      },
+      {
+        "id": "ipl-2024",
+        "name": "Indian Premier League 2024",
+        "status": "Live",
+        "description": "The biggest T20 cricket league in the world, featuring top players from around the globe.",
+        "dates": "March 22 - May 26, 2024",
+        "format": "Twenty20",
+        "locations": "India",
+        "teams": 10,
+        "pointsTable": [
+          { "team": "Chennai Super Kings", "played": 14, "won": 9, "lost": 5, "tied": 0, "points": 18, "nrr": 0.523 },
+          { "team": "Mumbai Indians", "played": 14, "won": 9, "lost": 5, "tied": 0, "points": 18, "nrr": 0.456 },
+          { "team": "Royal Challengers Bangalore", "played": 14, "won": 8, "lost": 6, "tied": 0, "points": 16, "nrr": 0.234 },
+          { "team": "Gujarat Titans", "played": 14, "won": 8, "lost": 6, "tied": 0, "points": 16, "nrr": 0.123 },
+          { "team": "Kolkata Knight Riders", "played": 14, "won": 7, "lost": 7, "tied": 0, "points": 14, "nrr": -0.123 },
+          { "team": "Delhi Capitals", "played": 14, "won": 7, "lost": 7, "tied": 0, "points": 14, "nrr": -0.234 },
+          { "team": "Rajasthan Royals", "played": 14, "won": 6, "lost": 8, "tied": 0, "points": 12, "nrr": -0.456 },
+          { "team": "Sunrisers Hyderabad", "played": 14, "won": 5, "lost": 9, "tied": 0, "points": 10, "nrr": -0.789 }
+        ],
+        "matches": [
+          { "id": "ipl1", "team1": "CSK", "team2": "MI", "date": "March 22, 2024", "venue": "M.A. Chidambaram Stadium", "status": "Finished", "result": "CSK won by 5 wickets" },
+          { "id": "ipl2", "team1": "RCB", "team2": "KKR", "date": "March 23, 2024", "venue": "M. Chinnaswamy Stadium", "status": "Finished", "result": "RCB won by 8 wickets" },
+          { "id": "ipl3", "team1": "GT", "team2": "DC", "date": "March 24, 2024", "venue": "Narendra Modi Stadium", "status": "Scheduled" },
+          { "id": "ipl4", "team1": "RR", "team2": "SRH", "date": "March 25, 2024", "venue": "Sawai Mansingh Stadium", "status": "Scheduled" }
+        ]
+      },
+      {
+        "id": "ashes-2025",
+        "name": "The Ashes Series 2025",
+        "status": "Upcoming",
+        "dates": "Jul 2025 - Aug 2025",
+        "locations": "England & Australia",
+        "pointsTable": [],
+        "matches": []
+      },
+      {
+        "id": "asia-cup-2024",
+        "name": "Asia Cup 2024",
+        "status": "Upcoming",
+        "dates": "Aug 2024",
+        "locations": "Pakistan & Sri Lanka",
+        "pointsTable": [],
+        "matches": []
+      }
+    ],
+    "past": [
+      {
+        "id": "world-cup-2023",
+        "name": "ICC Cricket World Cup 2023",
+        "winner": "Australia",
+        "year": 2023
+      },
+      {
+        "id": "asia-cup-2023",
+        "name": "Asia Cup 2023",
+        "winner": "India",
+        "year": 2023
+      },
+      {
+        "id": "t20-world-cup-2022",
+        "name": "T20 World Cup 2022",
+        "winner": "England",
+        "year": 2022
+      },
+      {
+        "id": "ipl-2023",
+        "name": "IPL 2023",
+        "winner": "Chennai Super Kings",
+        "year": 2023
+      },
+      {
+        "id": "hundred-2023",
+        "name": "The Hundred 2023",
+        "winner": "Southern Brave",
+        "year": 2023
+      },
+      {
+        "id": "bbl-2023",
+        "name": "Big Bash League 2023",
+        "winner": "Perth Scorchers",
+        "year": 2023
+      }
+    ]
+  },
+  "news": {
+    "featured": {
+      "category": "Match Analysis",
+      "title": "India Dominates in Latest Series Opener Against Australia",
+      "excerpt": "India secured a comprehensive victory in the opening match of the series, with stellar performances from both bat and ball. The team's strategic approach and execution were key to their success against a strong Australian side.",
+      "date": "2 days ago",
+      "readTime": "7 min read"
+    },
+    "articles": [
+      {
+        "id": "news1",
+        "category": "Interview",
+        "title": "Exclusive: Captain Rohit Sharma on Team India's World Cup",
+        "excerpt": "Captain Rohit Sharma shares insights on India's preparation and strategy for the upcoming World Cup campaign.",
+        "date": "3 days ago",
+        "readTime": "5 min read"
+      },
+      {
+        "id": "news2",
+        "category": "Player Focus",
+        "title": "Rising the Young Guns: Emerging Talent Shines Bright in Domestic",
+        "excerpt": "A look at the promising young cricketers making their mark in domestic cricket tournaments.",
+        "date": "4 days ago",
+        "readTime": "6 min read"
+      },
+      {
+        "id": "news3",
+        "category": "Events",
+        "title": "The T20 Premier League: A Spectacle of Cricket and",
+        "excerpt": "Exploring the excitement and drama of the T20 Premier League season.",
+        "date": "5 days ago",
+        "readTime": "4 min read"
+      }
+    ],
+    "breaking": [
+      { "title": "Major Upset in County Championship", "time": "Just now" },
+      { "title": "Record-Breaking Partnership in Test Match", "time": "1 hour ago" },
+      { "title": "New Zealand Announces Squad for Upcoming Tour", "time": "3 hours ago" }
+    ]
+  },
+  "products": [
+    {
+      "id": "prod1",
+      "name": "Pro Willow Cricket Bat",
+      "brand": "CricMaster",
+      "category": "Bats",
+      "price": 349.99,
+      "image": "🏏"
+    },
+    {
+      "id": "prod2",
+      "name": "Elite Leather Cricket Ball",
+      "brand": "CricMaster",
+      "category": "Balls",
+      "price": 29.50,
+      "image": "🏏"
+    },
+    {
+      "id": "prod3",
+      "name": "Supreme Batting Pads",
+      "brand": "GuardPro",
+      "category": "Protection",
+      "price": 189.00,
+      "image": "🏏"
+    }
+  ]
+}
+

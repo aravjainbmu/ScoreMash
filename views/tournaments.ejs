@@ -1,0 +1,370 @@
+<%- include('partials/header', { title: title, currentPage: 'tournaments', cssFile: 'tournaments' }) %>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Tournaments Overview</h1>
+    </div>
+
+    <div class="tournaments-layout">
+        <div class="tournaments-sidebar">
+            <h3>Active Tournaments</h3>
+            <div class="tournament-list">
+                <% if (typeof activeTournaments !== 'undefined' && activeTournaments.length > 0) { %>
+                    <% activeTournaments.forEach((tournament, index) => { %>
+                    <div class="tournament-list-item <%= (selectedTournament && selectedTournament.id === tournament.id) ? 'active' : '' %>" 
+                         data-tournament-id="<%= tournament.id %>" 
+                         onclick="selectTournament('<%= tournament.id %>')">
+                        <div class="tournament-list-header">
+                            <span class="tournament-name"><%= tournament.name %></span>
+                            <span class="tournament-badge <%= tournament.status.toLowerCase() %>"><%= tournament.status %></span>
+                        </div>
+                        <% if (tournament.description) { %>
+                        <p class="tournament-description"><%= tournament.description %></p>
+                        <% } %>
+                    </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No active tournaments</p>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="tournament-content">
+            <% if (selectedTournament) { %>
+            <h2><%= selectedTournament.name %></h2>
+            <div class="tournament-tabs">
+                <button class="tournament-tab active" data-tab="overview">Overview & Schedules</button>
+                <button class="tournament-tab" data-tab="points">Points Table</button>
+            </div>
+
+            <div class="tab-content active" id="overview-tab">
+                <div class="tournament-info-section">
+                    <h3>Tournament Information</h3>
+                    <div class="tournament-image-placeholder">🏟️</div>
+                    <div class="tournament-details">
+                        <% if (selectedTournament.description) { %>
+                        <p><strong>Description:</strong> <%= selectedTournament.description %></p>
+                        <% } %>
+                        <% if (selectedTournament.dates) { %>
+                        <p><strong>Dates:</strong> <%= selectedTournament.dates %></p>
+                        <% } %>
+                        <% if (selectedTournament.format) { %>
+                        <p><strong>Format:</strong> <%= selectedTournament.format %></p>
+                        <% } %>
+                        <% if (selectedTournament.locations) { %>
+                        <p><strong>Locations:</strong> <%= selectedTournament.locations %></p>
+                        <% } %>
+                    </div>
+                </div>
+
+                <div class="match-schedule-section">
+                    <h3>Match Schedule</h3>
+                    <div class="schedule-list">
+                        <% if (selectedTournament.matches && selectedTournament.matches.length > 0) { %>
+                            <% selectedTournament.matches.forEach(match => { %>
+                            <div class="schedule-item">
+                                <div class="schedule-info">
+                                    <div class="schedule-teams"><%= match.team1 %> vs <%= match.team2 %></div>
+                                    <div class="schedule-details"><%= match.date %> at <%= match.venue %></div>
+                                </div>
+                                <span class="schedule-status <%= match.status ? match.status.toLowerCase() : '' %>"><%= match.status || 'Scheduled' %></span>
+                            </div>
+                            <% }); %>
+                        <% } else { %>
+                            <p>No matches scheduled yet</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="points-tab">
+                <div class="points-table-section">
+                    <h3>Points Table</h3>
+                    <% if (selectedTournament.status === 'Upcoming') { %>
+                        <p style="color: var(--darkgrey); font-size: 14px; padding: 20px; background: var(--grey); border-radius: 8px; text-align: center;">
+                            Points table will be available once the tournament begins.
+                        </p>
+                    <% } else if (selectedTournament.pointsTable && selectedTournament.pointsTable.length > 0) { %>
+                        <table class="points-table">
+                            <thead>
+                                <tr>
+                                    <th>Pos</th>
+                                    <th>Team</th>
+                                    <th>Played</th>
+                                    <th>Won</th>
+                                    <th>Lost</th>
+                                    <th>Tied</th>
+                                    <th>Points</th>
+                                    <th>NRR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% selectedTournament.pointsTable.forEach((team, index) => { %>
+                                <tr>
+                                    <td><%= index + 1 %></td>
+                                    <td><strong><%= team.team %></strong></td>
+                                    <td><%= team.played || 0 %></td>
+                                    <td><%= team.won || 0 %></td>
+                                    <td><%= team.lost || 0 %></td>
+                                    <td><%= team.tied || 0 %></td>
+                                    <td><strong><%= team.points || 0 %></strong></td>
+                                    <td><%= team.nrr !== undefined ? team.nrr.toFixed(3) : '0.000' %></td>
+                                </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p style="color: var(--darkgrey); font-size: 14px; padding: 20px; background: var(--grey); border-radius: 8px; text-align: center;">
+                            Points table data not available yet
+                        </p>
+                    <% } %>
+                </div>
+            </div>
+            <% } else { %>
+            <p>Select a tournament to view details</p>
+            <% } %>
+        </div>
+    </div>
+
+    <% if (typeof pastTournaments !== 'undefined' && pastTournaments.length > 0) { %>
+    <div class="past-tournaments-section">
+        <h2>Past Tournaments</h2>
+        <div class="past-tournaments-grid">
+            <% pastTournaments.forEach(tournament => { %>
+            <div class="tournament-card">
+                <h3><%= tournament.name %></h3>
+                <p><strong>Winner:</strong> <%= tournament.winner %></p>
+                <p><strong>Year:</strong> <%= tournament.year %></p>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+<script>
+    // Tournament data passed from server
+    window.tournamentsData = {
+        <% activeTournaments.forEach((tournament, index) => { %>
+        '<%= tournament.id %>': <%- JSON.stringify(tournament) %><%= index < activeTournaments.length - 1 ? ',' : '' %>
+        <% }); %>
+    };
+    
+    function selectTournament(tournamentId) {
+        const tournament = window.tournamentsData[tournamentId];
+        if (!tournament) {
+            console.error('Tournament not found:', tournamentId);
+            return;
+        }
+        
+        // Update active state in sidebar
+        document.querySelectorAll('.tournament-list-item').forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.tournamentId === tournamentId) {
+                item.classList.add('active');
+            }
+        });
+        
+        // Update tournament content
+        const tournamentNameEl = document.querySelector('.tournament-content h2');
+        if (tournamentNameEl) {
+            tournamentNameEl.textContent = tournament.name || '';
+        }
+        
+        // Update tournament info
+        const tournamentDetails = document.querySelector('.tournament-details');
+        if (tournamentDetails) {
+            let html = '';
+            if (tournament.description) {
+                html += `<p><strong>Description:</strong> ${tournament.description}</p>`;
+            }
+            if (tournament.dates) {
+                html += `<p><strong>Dates:</strong> ${tournament.dates}</p>`;
+            }
+            if (tournament.format) {
+                html += `<p><strong>Format:</strong> ${tournament.format}</p>`;
+            }
+            if (tournament.locations) {
+                html += `<p><strong>Locations:</strong> ${tournament.locations}</p>`;
+            }
+            tournamentDetails.innerHTML = html;
+        }
+        
+        // Update match schedule
+        const scheduleList = document.querySelector('.schedule-list');
+        if (scheduleList && tournament.matches && tournament.matches.length > 0) {
+            scheduleList.innerHTML = tournament.matches.map(match => `
+                <div class="schedule-item">
+                    <div class="schedule-info">
+                        <div class="schedule-teams">${match.team1 || ''} vs ${match.team2 || ''}</div>
+                        <div class="schedule-details">${match.date || ''} at ${match.venue || ''}</div>
+                    </div>
+                    <span class="schedule-status ${match.status ? match.status.toLowerCase() : ''}">${match.status || 'Scheduled'}</span>
+                </div>
+            `).join('');
+        } else if (scheduleList) {
+            scheduleList.innerHTML = '<p>No matches scheduled yet</p>';
+        }
+        
+        // Update points table
+        const pointsTableSection = document.querySelector('.points-table-section');
+        if (pointsTableSection) {
+            if (tournament.status === 'Upcoming') {
+                pointsTableSection.innerHTML = `
+                    <h3>Points Table</h3>
+                    <p style="color: var(--darkgrey); font-size: 14px; padding: 20px; background: var(--grey); border-radius: 8px; text-align: center;">
+                        Points table will be available once the tournament begins.
+                    </p>
+                `;
+            } else if (tournament.pointsTable && tournament.pointsTable.length > 0) {
+                pointsTableSection.innerHTML = `
+                    <h3>Points Table</h3>
+                    <table class="points-table">
+                        <thead>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Team</th>
+                                <th>Played</th>
+                                <th>Won</th>
+                                <th>Lost</th>
+                                <th>Tied</th>
+                                <th>Points</th>
+                                <th>NRR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${tournament.pointsTable.map((team, index) => `
+                                <tr>
+                                    <td>${index + 1}</td>
+                                    <td><strong>${team.team || ''}</strong></td>
+                                    <td>${team.played || 0}</td>
+                                    <td>${team.won || 0}</td>
+                                    <td>${team.lost || 0}</td>
+                                    <td>${team.tied || 0}</td>
+                                    <td><strong>${team.points || 0}</strong></td>
+                                    <td>${team.nrr !== undefined ? team.nrr.toFixed(3) : '0.000'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                pointsTableSection.innerHTML = `
+                    <h3>Points Table</h3>
+                    <p style="color: var(--darkgrey); font-size: 14px; padding: 20px; background: var(--grey); border-radius: 8px; text-align: center;">
+                        Points table data not available yet
+                    </p>
+                `;
+            }
+        }
+        
+        // Update URL without reload
+        window.history.pushState({}, '', `/tournaments?tournament=${tournamentId}`);
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        // Tab switching for Overview/Points Table
+        const tabs = document.querySelectorAll('.tournament-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const targetContent = document.getElementById(targetTab + '-tab');
+                if (targetContent) {
+                    targetContent.classList.add('active');
+                }
+            });
+        });
+        
+        // Check URL for tournament selection
+        const urlParams = new URLSearchParams(window.location.search);
+        const tournamentId = urlParams.get('tournament');
+        if (tournamentId && window.tournamentsData[tournamentId]) {
+            selectTournament(tournamentId);
+        }
+    });
+</script>
+
+<style>
+    .tab-content {
+        display: none;
+    }
+    
+    .tab-content.active {
+        display: block;
+    }
+    
+    .tournament-tab {
+        padding: 12px 24px;
+        background: var(--grey);
+        border: none;
+        border-radius: 6px 6px 0 0;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: "Poppins", sans-serif;
+        color: var(--darkgrey);
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-right: 4px;
+    }
+    
+    .tournament-tab:hover {
+        background: #e5e7eb;
+    }
+    
+    .tournament-tab.active {
+        background: white;
+        color: var(--green);
+        border-bottom: 2px solid var(--green);
+    }
+    
+    .points-table-section {
+        margin-top: 32px;
+    }
+    
+    .points-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .points-table thead {
+        background: var(--green);
+        color: white;
+    }
+    
+    .points-table th {
+        padding: 16px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .points-table td {
+        padding: 16px;
+        border-bottom: 1px solid #e5e7eb;
+        font-size: 14px;
+    }
+    
+    .points-table tbody tr:hover {
+        background: #f9fafb;
+    }
+    
+    .points-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+
+<%- include('partials/footer') %>
+

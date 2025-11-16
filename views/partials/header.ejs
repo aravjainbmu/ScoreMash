@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'ScoreMash' %></title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/index.css">
+    <% if (typeof cssFile !== 'undefined') { %>
+    <link rel="stylesheet" href="/css/<%= cssFile %>.css">
+    <% } %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left">
+                <div class="logo">
+                    <div class="logo-inside"></div>
+                    ScoreMash
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="nav-links" id="navLinks">
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'index' ? 'current' : '' %>" href="/"><span class="material-symbols-outlined">home</span>Home</a>
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'matches' ? 'current' : '' %>" href="/matches"><span class="material-symbols-outlined">sports_cricket</span>Live Matches</a>
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'players' ? 'current' : '' %>" href="/players"><span class="material-symbols-outlined">person</span>Player Statistics</a>
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'teams' ? 'current' : '' %>" href="/teams"><span class="material-symbols-outlined">groups_3</span>Team Overview</a>
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'tournaments' ? 'current' : '' %>" href="/tournaments"><span class="material-symbols-outlined">trophy</span>Tournaments</a>
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'news' ? 'current' : '' %>" href="/news"><span class="material-symbols-outlined">newsmode</span>News</a>
+                    <a class="<%= typeof currentPage !== 'undefined' && currentPage === 'shop' ? 'current' : '' %>" href="/shop"><span class="material-symbols-outlined">shopping_bag</span>Shop</a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="nav-buttons">
+            <% if (typeof user !== 'undefined' && user && !user.isAdmin) { %>
+                <a href="/cart"><span class="material-symbols-outlined">shopping_cart</span></a>
+            <% } %>
+            <% if (typeof user !== 'undefined' && user) { %>
+                <% if (user.isAdmin) { %>
+                    <a href="/admin"><span class="material-symbols-outlined">admin_panel_settings</span>Admin</a>
+                <% } else { %>
+                    <a href="/settings"><span class="material-symbols-outlined">person</span>Settings</a>
+                <% } %>
+                <span style="color: var(--darkgrey); display: flex; align-items: center;">Hello, <%= user.name || user.email %></span>
+                <a href="/auth/logout"><span class="material-symbols-outlined">logout</span>Logout</a>
+            <% } else { %>
+                <a id="signin" href="/auth/signin"><span class="material-symbols-outlined">login</span>Sign In</a>
+                <a id="signup" href="/auth/signup"><span class="material-symbols-outlined">person_add</span>Sign Up</a>
+            <% } %>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = menuToggle.querySelector('.material-symbols-outlined');
+                    if (icon) {
+                        icon.textContent = navLinks.classList.contains('active') ? 'close' : 'menu';
+                    }
+                });
+                
+                // Close menu when clicking on a link
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        const icon = menuToggle.querySelector('.material-symbols-outlined');
+                        if (icon) {
+                            icon.textContent = 'menu';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+

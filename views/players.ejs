@@ -1,0 +1,184 @@
+<%- include('partials/header', { title: title, currentPage: 'players', cssFile: 'players' }) %>
+
+<div class="container">
+    <div class="page-header">
+        <h1>Player Statistics</h1>
+        <p>Explore comprehensive batting and bowling statistics, recent performances, and career averages for your favorite cricket players.</p>
+        <div class="search-box">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" id="playerSearch" placeholder="Search player by name...">
+        </div>
+    </div>
+
+    <div class="featured-players-section">
+        <h2>Featured Players</h2>
+        <div class="players-grid">
+            <% if (typeof players !== 'undefined' && players.length > 0) { %>
+                <% players.forEach(player => { %>
+                <div class="player-card" data-team="<%= player.team || '' %>">
+                    <div class="player-image">👤</div>
+                    <h3><%= player.name %></h3>
+                    <p class="player-role"><%= player.role %></p>
+                    <div class="player-stats-grid">
+                        <div class="stat-col">
+                            <div class="stat-row">
+                                <span class="stat-label">Runs</span>
+                                <span class="stat-value"><%= player.stats ? player.stats.runs : 'N/A' %></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Average</span>
+                                <span class="stat-value"><%= player.stats ? player.stats.average : 'N/A' %></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">100s</span>
+                                <span class="stat-value"><%= player.stats ? player.stats.centuries : 'N/A' %></span>
+                            </div>
+                        </div>
+                        <div class="stat-col">
+                            <div class="stat-row">
+                                <span class="stat-label">Wickets</span>
+                                <span class="stat-value"><%= player.stats ? player.stats.wickets : 'N/A' %></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Strike Rate</span>
+                                <span class="stat-value"><%= player.stats ? player.stats.strikeRate : 'N/A' %></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Economy</span>
+                                <span class="stat-value"><%= player.stats ? player.stats.economy : 'N/A' %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/players/<%= player.id %>" class="view-details-btn">View Details</a>
+                </div>
+                <% }); %>
+            <% } else { %>
+                <p>No players found.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <div class="detailed-statistics-section">
+        <h2>Detailed Statistics</h2>
+        <div class="stats-tabs">
+            <button class="tab-btn active" data-tab="batting">Batting Statistics</button>
+            <button class="tab-btn" data-tab="bowling">Bowling Statistics</button>
+        </div>
+
+        <div class="tab-content active" id="batting">
+            <div class="stats-table-section">
+                <h3>Career Batting Averages</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>MATCH TYPE</th>
+                            <th>MATCHES</th>
+                            <th>INNINGS</th>
+                            <th>RUNS</th>
+                            <th>HS</th>
+                            <th>AVG</th>
+                            <th>SR</th>
+                            <th>100s</th>
+                            <th>50s</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (typeof players !== 'undefined' && players[0] && players[0].careerBatting) { %>
+                            <% players[0].careerBatting.forEach(stat => { %>
+                            <tr>
+                                <td><%= stat.type %></td>
+                                <td><%= stat.matches %></td>
+                                <td><%= stat.innings %></td>
+                                <td><%= stat.runs %></td>
+                                <td><%= stat.hs %></td>
+                                <td><%= stat.avg %></td>
+                                <td><%= stat.sr %></td>
+                                <td><%= stat['100s'] %></td>
+                                <td><%= stat['50s'] %></td>
+                            </tr>
+                            <% }); %>
+                        <% } else { %>
+                            <tr><td colspan="9">No data available</td></tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-content" id="bowling">
+            <div class="stats-table-section">
+                <h3>Career Bowling Averages</h3>
+                <table class="stats-table">
+                    <thead>
+                        <tr>
+                            <th>MATCH TYPE</th>
+                            <th>MATCHES</th>
+                            <th>WICKETS</th>
+                            <th>RUNS</th>
+                            <th>AVG</th>
+                            <th>ECONOMY</th>
+                            <th>SR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (typeof players !== 'undefined' && players.length > 0) { %>
+                            <% 
+                            let hasBowlingData = false;
+                            players.forEach(player => { 
+                                if (player.careerBowling && player.careerBowling.length > 0) {
+                                    hasBowlingData = true;
+                                    player.careerBowling.forEach(stat => { %>
+                                    <tr>
+                                        <td><%= stat.type %></td>
+                                        <td><%= stat.matches %></td>
+                                        <td><%= stat.wickets %></td>
+                                        <td><%= stat.runs %></td>
+                                        <td><%= stat.avg %></td>
+                                        <td><%= stat.economy %></td>
+                                        <td><%= stat.sr %></td>
+                                    </tr>
+                                    <% }); %>
+                                <% } else if (player.role && player.role.toLowerCase().includes('bowler')) {
+                                    hasBowlingData = true; %>
+                                    <tr>
+                                        <td>ODI</td>
+                                        <td>-</td>
+                                        <td><%= player.stats ? player.stats.wickets : '-' %></td>
+                                        <td>-</td>
+                                        <td><%= player.stats ? player.stats.average : '-' %></td>
+                                        <td><%= player.stats ? player.stats.economy : '-' %></td>
+                                        <td><%= player.stats ? player.stats.strikeRate : '-' %></td>
+                                    </tr>
+                                <% } %>
+                            <% }); %>
+                            <% if (!hasBowlingData) { %>
+                                <tr><td colspan="7">No bowling data available</td></tr>
+                            <% } %>
+                        <% } else { %>
+                            <tr><td colspan="7">No data available</td></tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.dataset.tab;
+            
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked tab and corresponding content
+            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+</script>
+
+<%- include('partials/footer', { jsFile: 'players' }) %>
+

@@ -1,0 +1,239 @@
+<%- include('partials/header', { title: title, currentPage: '', cssFile: 'settings' }) %>
+
+<div class="container">
+    <div class="settings-page">
+        <h1 class="settings-title">User Profile & Settings</h1>
+        
+        <div class="settings-content">
+            <!-- Left Sidebar -->
+            <div class="settings-sidebar">
+                <nav class="settings-nav">
+                    <a href="/settings" class="nav-item <%= activeSection === 'account' ? 'active' : '' %>">
+                        <span class="material-symbols-outlined">person</span>
+                        <span>Account Information</span>
+                    </a>
+                    <a href="/settings/notifications" class="nav-item <%= activeSection === 'notifications' ? 'active' : '' %>">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span>Notification Settings</span>
+                    </a>
+                    <a href="/settings/preferences" class="nav-item <%= activeSection === 'preferences' ? 'active' : '' %>">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span>Preferences</span>
+                    </a>
+                    <a href="/settings/help" class="nav-item <%= activeSection === 'help' ? 'active' : '' %>">
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                        <span>Help & Support</span>
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="settings-main">
+                <div class="settings-card">
+                    <% if (activeSection === 'account') { %>
+                        <h2>Account Information</h2>
+                        <p class="settings-subtitle">Manage your profile details and security settings.</p>
+                        
+                        <% if (typeof error !== 'undefined' && error) { %>
+                        <div class="alert alert-error">
+                            <%= error %>
+                        </div>
+                        <% } %>
+                        
+                        <% if (typeof success !== 'undefined' && success) { %>
+                        <div class="alert alert-success">
+                            <%= success %>
+                        </div>
+                        <% } %>
+                        
+                        <!-- Profile Details -->
+                        <div class="settings-section">
+                            <h3>Profile Details</h3>
+                            <form action="/settings/account" method="POST" class="settings-form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" value="<%= user.name || '' %>" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <div class="input-with-icon">
+                                        <span class="material-symbols-outlined input-icon">mail</span>
+                                        <input type="email" id="email" name="email" value="<%= user.email || '' %>" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Change Password -->
+                        <div class="settings-section">
+                            <h3>Change Password</h3>
+                            <form action="/settings/password" method="POST" class="settings-form">
+                                <div class="form-group">
+                                    <label for="currentPassword">Current Password</label>
+                                    <div class="input-with-icon">
+                                        <span class="material-symbols-outlined input-icon">lock</span>
+                                        <input type="password" id="currentPassword" name="currentPassword" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="newPassword">New Password</label>
+                                    <div class="input-with-icon">
+                                        <span class="material-symbols-outlined input-icon">lock</span>
+                                        <input type="password" id="newPassword" name="newPassword" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm New Password</label>
+                                    <div class="input-with-icon">
+                                        <span class="material-symbols-outlined input-icon">lock</span>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    <% } else if (activeSection === 'notifications') { %>
+                        <h2>Notification Settings</h2>
+                        <p class="settings-subtitle">Manage how you receive notifications and updates.</p>
+                        
+                        <div class="settings-section">
+                            <h3>Email Notifications</h3>
+                            <form action="/settings/notifications" method="POST" class="settings-form">
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="matchUpdates" <%= typeof user.notifications !== 'undefined' && user.notifications.matchUpdates ? 'checked' : '' %>>
+                                        <span>Match updates and live scores</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="newsArticles" <%= typeof user.notifications !== 'undefined' && user.notifications.newsArticles ? 'checked' : '' %>>
+                                        <span>News and articles</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="tournamentUpdates" <%= typeof user.notifications !== 'undefined' && user.notifications.tournamentUpdates ? 'checked' : '' %>>
+                                        <span>Tournament updates</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="orderUpdates" <%= typeof user.notifications !== 'undefined' && user.notifications.orderUpdates ? 'checked' : '' %>>
+                                        <span>Order and shipping updates</span>
+                                    </label>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>Push Notifications</h3>
+                            <p style="color: var(--darkgrey); margin-bottom: 20px;">Enable browser notifications for real-time updates.</p>
+                            <button class="save-btn" style="background: var(--grey); color: var(--black);">Enable Push Notifications</button>
+                        </div>
+                    <% } else if (activeSection === 'preferences') { %>
+                        <h2>Preferences</h2>
+                        <p class="settings-subtitle">Customize your ScoreMash experience.</p>
+                        
+                        <div class="settings-section">
+                            <h3>Display Preferences</h3>
+                            <form action="/settings/preferences" method="POST" class="settings-form">
+                                <div class="form-group">
+                                    <label for="theme">Theme</label>
+                                    <select id="theme" name="theme" class="form-select">
+                                        <option value="light" <%= typeof user.preferences !== 'undefined' && user.preferences.theme === 'light' ? 'selected' : '' %>>Light</option>
+                                        <option value="dark" <%= typeof user.preferences !== 'undefined' && user.preferences.theme === 'dark' ? 'selected' : '' %>>Dark</option>
+                                        <option value="auto" <%= typeof user.preferences !== 'undefined' && user.preferences.theme === 'auto' ? 'selected' : '' %>>Auto (System)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="language">Language</label>
+                                    <select id="language" name="language" class="form-select">
+                                        <option value="en" <%= typeof user.preferences !== 'undefined' && user.preferences.language === 'en' ? 'selected' : '' %>>English</option>
+                                        <option value="hi" <%= typeof user.preferences !== 'undefined' && user.preferences.language === 'hi' ? 'selected' : '' %>>Hindi</option>
+                                        <option value="es" <%= typeof user.preferences !== 'undefined' && user.preferences.language === 'es' ? 'selected' : '' %>>Spanish</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="timezone">Timezone</label>
+                                    <select id="timezone" name="timezone" class="form-select">
+                                        <option value="IST" <%= typeof user.preferences !== 'undefined' && user.preferences.timezone === 'IST' ? 'selected' : '' %>>Indian Standard Time (IST)</option>
+                                        <option value="UTC" <%= typeof user.preferences !== 'undefined' && user.preferences.timezone === 'UTC' ? 'selected' : '' %>>UTC</option>
+                                        <option value="EST" <%= typeof user.preferences !== 'undefined' && user.preferences.timezone === 'EST' ? 'selected' : '' %>>Eastern Standard Time (EST)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="showFeaturedContent" <%= typeof user.preferences !== 'undefined' && user.preferences.showFeaturedContent !== false ? 'checked' : '' %>>
+                                        <span>Show featured content on homepage</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="autoPlayVideos" <%= typeof user.preferences !== 'undefined' && user.preferences.autoPlayVideos !== false ? 'checked' : '' %>>
+                                        <span>Auto-play videos</span>
+                                    </label>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    <% } else if (activeSection === 'help') { %>
+                        <h2>Help & Support</h2>
+                        <p class="settings-subtitle">Get help and contact our support team.</p>
+                        
+                        <div class="settings-section">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="faq-list">
+                                <div class="faq-item">
+                                    <h4>How do I track my order?</h4>
+                                    <p>You can track your order by visiting the Orders page in your account settings. You'll receive email updates as your order is processed and shipped.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>How do I update my profile information?</h4>
+                                    <p>You can update your profile information in the Account Information section. Click "Save Changes" after making your updates.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>How do I change my password?</h4>
+                                    <p>Go to Account Information and scroll down to the "Change Password" section. Enter your current password and your new password twice.</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>How do I contact support?</h4>
+                                    <p>You can reach our support team by emailing support@scoremash.com or by using the contact form on our website.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h3>Contact Support</h3>
+                            <p style="color: var(--darkgrey); margin-bottom: 20px;">Need help? Contact our support team.</p>
+                            <div class="contact-info">
+                                <p><strong>Email:</strong> support@scoremash.com</p>
+                                <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                                <p><strong>Hours:</strong> Monday - Friday, 9 AM - 6 PM IST</p>
+                            </div>
+                            <a href="/contact" class="save-btn" style="text-decoration: none; display: inline-block; margin-top: 20px;">Contact Us</a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+
