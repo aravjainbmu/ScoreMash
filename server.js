@@ -44,7 +44,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://aravjain24cse_db_user:EzIZ98RwczvsieAq@productscluster.1lrktzw.mongodb.net/scoremash', {
+mongoose.connect('<mongodb url>', {
   serverSelectionTimeoutMS: 5000
 })
   .then(() => {
